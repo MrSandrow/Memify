@@ -2,32 +2,21 @@
 
 ### Tools
 
-https://academind.com/tutorials/javascript-testing-introduction/
-https://academind.com/tutorials/testing-react-apps/
-https://www.youtube.com/watch?v=is83bEK3n5A
-https://youtu.be/7N63cMKosIE
-How to test UI
-How to test a React App
-How to test State in React
-How to test Side Effects
-How are large apps tested (eg : Spotify)
-Create Testing.md
-
-- Learn how to use React with TypeScript (Cool Features)
-  - https://www.youtube.com/watch?v=Z5iWr6Srsj8 & https://www.youtube.com/watch?v=ydkQlJhodio
-- Learn how to write Good React Code
-- Learn React Design Patterns
-- Learn Common Design Patterns to use with React
-- Learn how to use Side Effects in Functionnal Programming / React
+- Learn how to use React with TypeScript - https://youtu.be/ydkQlJhodio & https://youtu.be/Z5iWr6Srsj8
 - Determine what the Layout of my app will look like
 
 - Use CSS in JS (Styled Components)
 - Use Autoprefixer & Polyfilling (PostCSS)
 
-- Use a Testing Library (Jest / Cypress / React Testing Library)
+- Use a Testing Library (Jest / React Testing Library)
 - Use Visual Regression Testing (Percy / Chromatic)
 
+- Learn how to write Good React Code
 - Determine How to Structure my Files
+- Learn React Design Patterns
+- Learn Common Design Patterns to use with React
+- Learn how to use Side Effects in Functionnal Programming / React
+
 - Use Pull Requests
 - Use Advanced React Features
 - Use React Router (Single Page App)
@@ -50,6 +39,7 @@ Create Testing.md
 
 - Sign In / Sign Up / Sign Out
 - Access & Edit & Save account settings (Username, Password, Profile Picture, Delete Account)
+- Redirect users to the sign in page if they try to visit a 'signed in only' page without being logged in
 
 - Save a meme to the dashboard (Drafts)
 - Access the dashboard (Featuring Different Screens : Drafts & Trash & Account Settings)
