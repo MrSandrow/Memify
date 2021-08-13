@@ -1,8 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
+const nodeEnv = process.env.NODE_ENV || 'production';
+const isDevelopment = nodeEnv === 'development';
+
+const devtoolSetting = isDevelopment ? 'source-map' : false;
+const babelPlugins = isDevelopment ? ['react-refresh/babel'] : [];
+
 module.exports = {
+  mode: nodeEnv,
+  devtool: devtoolSetting,
   entry: './src/index.tsx',
   output: {
     filename: '[name].[contenthash].js',
@@ -14,7 +23,13 @@ module.exports = {
       {
         test: /\.(ts|tsx)$/,
         include: path.resolve('src'),
-        use: { loader: 'babel-loader', options: { cacheDirectory: true } },
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: babelPlugins,
+            cacheDirectory: true,
+          },
+        },
       },
     ],
   },
@@ -24,6 +39,7 @@ module.exports = {
   },
 
   plugins: [
+    new CompressionPlugin(),
     new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -34,8 +50,8 @@ module.exports = {
   devServer: {
     host: '127.0.0.1',
     port: 5500,
-    hot: true,
     open: true,
+    hot: isDevelopment,
     clientLogLevel: 'none',
   },
 };

@@ -2,8 +2,8 @@
   "name": "memify",
   "version": "1.0.0",
   "scripts": {
-    "build": "webpack --mode=production",
-    "dev": "webpack serve --mode=development --devtool=source-map"
+    "build": "cross-env NODE_ENV=production webpack",
+    "dev": "cross-env NODE_ENV=development webpack serve"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -20,6 +20,8 @@
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
     "babel-loader": "^8.2.2",
+    "compression-webpack-plugin": "^8.0.1",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.24.0",
