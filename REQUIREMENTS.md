@@ -2,11 +2,7 @@
 
 ### Tools
 
-- Learn how to use React with TypeScript - https://youtu.be/ydkQlJhodio & https://youtu.be/Z5iWr6Srsj8
-- Determine what the Layout of my app will look like
-
-- Use CSS in JS (Styled Components)
-- Use Autoprefixer & Polyfilling (PostCSS)
+Add ImageContainer (onClick upload image (once) / children : text || image)
 
 - Use a Testing Library (Jest / React Testing Library)
 - Use Visual Regression Testing (Percy / Chromatic)
@@ -67,3 +63,5 @@
 - Configure ESLint with Airbnb Config & React & TypeScript
 - Configure TSConfig File
 - Configure Webpack & Babel with JSX & TypeScript
+
+- Use CSS in JS (Styled Components)
