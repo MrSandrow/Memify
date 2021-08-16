@@ -21,26 +21,25 @@ module.exports = {
     '@typescript-eslint',
   ],
 
+  rules: {
+    'import/no-extraneous-dependencies': 'off',
+  },
+
   overrides: [{
     files: ['*.ts', '*.tsx'],
-
-    settings: {
-      'import/resolver': {
-        node: {
-          extensions: ['.ts', '.tsx'],
-        },
-      },
-    },
 
     rules: {
       // Modify existing rules to allow them to work with TypeScript
       'no-use-before-define': 'off',
       '@typescript-eslint/no-use-before-define': ['error'],
-      'react/jsx-filename-extension': [2, { extensions: ['.tsx'] }],
-      'import/extensions': [2, { ts: 'never', tsx: 'never' }],
+      'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
+      'import/extensions': ['error', { ts: 'never', tsx: 'never' }],
 
       // Disable rules already handled by TypeScript language features
       'no-unused-vars': 'off',
+      'no-undef': 'off',
+      'react/prop-types': 'off',
+      'import/no-unresolved': 'off',
     },
   }],
 };

@@ -25,6 +25,11 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
+        test: /\.ttf$/,
+        include: path.resolve('src'),
+        type: 'asset/resource',
+      },
+      {
         test: /\.(ts|tsx)$/,
         include: path.resolve('src'),
         use: {
@@ -46,7 +51,7 @@ module.exports = {
     new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
-      favicon: './src/img/favicon.png',
+      favicon: './src/favicon.png',
     }),
   ],
 

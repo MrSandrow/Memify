@@ -1,6 +1,6 @@
 # Testing
 
-#### Visual Testing
+### Visual Testing
 
 Targeted Devices : 
 
@@ -22,15 +22,15 @@ Targeted Devices :
 - 1920 x 1080 + Landscape
 - 2560 x 1440 + Landscape
 
-#### Integration Testing
+### Integration Testing
 
-Ressource : https://academind.com/tutorials/testing-react-apps/
-Golden Rule : Always think about what could go wrong in the app (Validate user inputs & Handle errors)
+- Ressource : https://academind.com/tutorials/testing-react-apps/
+- Golden Rule : Always think about what could go wrong in the app (Validate user inputs & Handle errors)
 
 1. Check that each component is being rendered without throwing an error - https://youtu.be/yjVhldDwiNE
 2. Check that each component is behaving as expected when the user interacts with it - https://youtu.be/is83bEK3n5A
 
-#### End to End Testing
+### End to End Testing
 
 Targeted Devices : 
 
@@ -38,6 +38,10 @@ Targeted Devices :
 - iPhone 12 + Portrait + Last iOS Version
 - Pixel 4 + Portrait + Last Android Version
 
-Workflow : 
+Workflow - Editor : 
 
-- Create a workflow including every step of the testing process (1 workflow per page - all features should be tested)
+- Upload an image that was taken in landscape orientation
+- Rotate the device
+- Reload the page
+- Upload an image that was taken in portrait orientation
+- Rotate the device
