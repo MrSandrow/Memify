@@ -1,13 +1,25 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Download } from '@styled-icons/bootstrap/Download';
+import { Download } from '@styled-icons/feather';
 
 const DownloadIcon = styled(Download)`
   cursor: pointer;
 `;
 
-const DownloadButton:FC = () => (
-  <DownloadIcon size="1.44em" title="Download" />
-);
+interface Props {
+  setShouldDownloadCanvas: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const DownloadButton:FC<Props> = (props) => {
+  const { setShouldDownloadCanvas } = props;
+
+  return (
+    <DownloadIcon
+      size="1.5em"
+      title="Download"
+      onClick={() => setShouldDownloadCanvas(true)}
+    />
+  );
+};
 
 export default DownloadButton;

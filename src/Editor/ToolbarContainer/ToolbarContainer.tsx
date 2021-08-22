@@ -1,9 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import ToolsButton from './ToolsButton/ToolsButton';
 import UndoButton from './UndoButton/UndoButton';
 import RedoButton from './RedoButton/RedoButton';
+import PenButton from './PenButton/PenButton';
+import ResetButton from './ResetButton/ResetButton';
 import DownloadButton from './DownloadButton/DownloadButton';
 
 const Container = styled.div`
@@ -12,7 +13,7 @@ const Container = styled.div`
   border-radius: 0.25rem 0.25rem 0 0;
   color: #dddddd;
   display: flex;
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   height: 100%;
   justify-content: space-evenly;
   margin: auto;
@@ -20,13 +21,23 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const ToolbarContainer:FC = () => (
-  <Container>
-    <UndoButton />
-    <RedoButton />
-    <ToolsButton />
-    <DownloadButton />
-  </Container>
-);
+interface Props {
+  setShouldDisplayPenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  setShouldDownloadCanvas: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const ToolbarContainer:FC<Props> = (props) => {
+  const { setShouldDisplayPenMenu, setShouldDownloadCanvas } = props;
+
+  return (
+    <Container>
+      <UndoButton />
+      <RedoButton />
+      <PenButton setShouldDisplayPenMenu={setShouldDisplayPenMenu} />
+      <ResetButton />
+      <DownloadButton setShouldDownloadCanvas={setShouldDownloadCanvas} />
+    </Container>
+  );
+};
 
 export default ToolbarContainer;

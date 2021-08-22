@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Undo } from '@styled-icons/icomoon/Undo';
+import { RotateCcw as Undo } from '@styled-icons/feather';
 
 const UndoIcon = styled(Undo)`
   cursor: pointer;
 `;
 
 const UndoButton:FC = () => (
-  <UndoIcon size="1.25em" title="Undo" />
+  <UndoIcon size="1.5em" title="Undo" />
 );
 
 export default UndoButton;

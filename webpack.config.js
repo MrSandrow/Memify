@@ -20,11 +20,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        include: path.resolve('src'),
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.ttf$/,
         include: path.resolve('src'),
         type: 'asset/resource',

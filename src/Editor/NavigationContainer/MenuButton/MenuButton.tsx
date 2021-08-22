@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Menu2 } from '@styled-icons/remix-line/Menu2';
+import { Menu } from '@styled-icons/feather';
 
-const MenuIcon = styled(Menu2)`
+const MenuIcon = styled(Menu)`
   cursor: pointer;
 `;
 
 const MenuButton:FC = () => (
-  <MenuIcon size="1.4em" title="Menu" />
+  <MenuIcon size="1.6em" title="Menu" />
 );
 
 export default MenuButton;

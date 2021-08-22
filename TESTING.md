@@ -25,7 +25,8 @@ Targeted Devices :
 ### Integration Testing
 
 - Ressource : https://academind.com/tutorials/testing-react-apps/
-- Golden Rule : Always think about what could go wrong in the app (Validate user inputs & Handle errors)
+- Workflow : Test that each component can render its child components & Only test child components if they contain complex logic
+- Golden Rules : Add tests immediately after adding a new feature & Always think about what could go wrong in the app (Validate user inputs & Handle errors)
 
 1. Check that each component is being rendered without throwing an error - https://youtu.be/yjVhldDwiNE
 2. Check that each component is behaving as expected when the user interacts with it - https://youtu.be/is83bEK3n5A
@@ -38,10 +39,18 @@ Targeted Devices :
 - iPhone 12 + Portrait + Last iOS Version
 - Pixel 4 + Portrait + Last Android Version
 
-Workflow - Editor : 
+Workflow - Editor (Repeat this workflow for both device orientations / window sizes) : 
 
-- Upload an image that was taken in landscape orientation
-- Rotate the device
-- Reload the page
-- Upload an image that was taken in portrait orientation
-- Rotate the device
+- Draw a line on the canvas
+- Open PenMenu by clicking on PenButton
+- Change pen color
+- Rotate the device / Resize the window
+- Change pen thickness
+- Close PenMenu by clicking on PenButton
+- Download the drawing
+- While holding the pointer down : draw on the canvas, move the pointer outside the canvas, move the pointer inside the canvas again
+- Open PenMenu by clicking on PenButton
+- Close PenMenu by clicking on PenButton
+- Rotate the device / Resize the window
+- Open PenMenu by clicking on PenButton
+- Close PenMenu by clicking on PenButton

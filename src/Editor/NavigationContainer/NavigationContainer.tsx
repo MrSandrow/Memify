@@ -19,6 +19,7 @@ const Container = styled.div`
 const Title = styled.span`
   font-family: 'Museo';
   font-size: 1.1em;
+  user-select: none;
 `;
 
 const NavigationContainer:FC = () => (

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Save } from '@styled-icons/feather/Save';
+import { Save } from '@styled-icons/feather';
 
 const SaveIcon = styled(Save)`
   cursor: pointer;
