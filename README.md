@@ -11,4 +11,4 @@
 
 - 
 
-You can find all the project's requirements in `REQUIREMENTS.md` and you can find the testing process in `TESTING.md`
+You can find the project's requirements in `REQUIREMENTS.md` and the testing process in `TESTING.md`
