@@ -28,6 +28,7 @@ interface ButtonProps {
 const Button = styled.button<ButtonProps>`
   background: white;
   border-radius: 50%;
+  color: black;
   font-size: 0.9em;
   font-weight: bold;
   height: 3em;
