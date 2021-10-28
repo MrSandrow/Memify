@@ -26,6 +26,7 @@ const CanvasElement = styled.canvas`
   margin: auto;
   max-height: 100%;
   max-width: 100%;
+  touch-action: none;
 `;
 
 interface Props {
@@ -138,10 +139,6 @@ const Canvas:FC<Props> = (props) => {
 
   function draw(event: ReactEvent) {
     if (!isDrawing) return;
-
-    /* Avoids scrolling when drawing on touch devices */
-    event.preventDefault();
-    event.stopPropagation();
 
     const reactEvent = 'touches' in event ? event.touches[0] : event;
 
