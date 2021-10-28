@@ -3,7 +3,8 @@
 ### Features
 
 - Reset the canvas (Ask for confirmation before resetting the canvas)
-- Revert Changes (Ctrl + Z & Ctrl + Y)
+- Revert Changes
+- Upload an image as a background
 - Add a special color for disabled icons in the toolbar
 - Display a warning when closing the page without having previously downloaded the drawing
 - Decide if I should replace useState with useContext
@@ -25,7 +26,7 @@
 
 - Search for a drawing in the Drafts / Trash
 - Save the pen settings in localStorage / Firebase
-- Add keyboard shortcuts
+- Add keyboard shortcuts (Ctrl + Z & Ctrl + Y)
 - Add animations where it looks good (React Spring / Framer Motion)
 
 - Share a drawing with others users (Enter their username / Get a custom link - The user will receive a copy that he can modify)
