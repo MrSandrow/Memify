@@ -138,6 +138,8 @@ const Canvas:FC<Props> = (props) => {
 
   function draw(event: ReactEvent) {
     if (!isDrawing) return;
+
+    event.preventDefault();
     const reactEvent = 'touches' in event ? event.touches[0] : event;
 
     const { offsetWidth, offsetHeight } = reactEvent.target as HTMLCanvasElement;
