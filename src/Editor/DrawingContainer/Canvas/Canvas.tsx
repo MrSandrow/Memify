@@ -17,6 +17,8 @@ const Container = styled.div<ContainerProps>`
   max-width: ${(props) => props.maxWidth}px;
   padding: 0.05rem;
   width: 100%;
+
+  flex-direction: column;
 `;
 
 const CanvasElement = styled.canvas`
@@ -159,7 +161,7 @@ const Canvas:FC<Props> = (props) => {
     const pointerX = (pageX - offsetLeft) * resizeRatio;
     const pointerY = (pageY - offsetTop) * resizeRatio;
 
-    setDebug(`pointerX:${pointerX}, pageX:${pageX}, offsetLeft:${offsetLeft}, windowWidth:${windowWidth}, offsetWidth:${offsetWidth}, resizeRatio:${resizeRatio}`);
+    setDebug(`pointerY:${Math.floor(pointerY)}, pageY:${Math.floor(pageY)}, offsetTop:${Math.floor(offsetTop)}, windowHeight:${Math.floor(windowHeight)}, offsetHeight:${Math.floor(offsetHeight)}, resizeRatio:${Math.floor(resizeRatio)}`);
 
     contextRef.current?.lineTo(pointerX, pointerY);
     contextRef.current?.stroke();
@@ -197,7 +199,7 @@ const Canvas:FC<Props> = (props) => {
   }
 
   return (
-    <Container maxWidth={canvasWidth} maxHeight={canvasHeight}>
+    <Container maxWidth={canvasWidth / 2} maxHeight={canvasHeight / 2}>
       <CanvasElement
         ref={canvasRef}
         data-testid="canvas"
@@ -215,7 +217,7 @@ const Canvas:FC<Props> = (props) => {
         onTouchMove={draw}
         onTouchEnd={stopDrawing}
       />
-      <p style={{ color: '#e0d8d8' }}>{debug}</p>
+      <p style={{ color: '#e0d8d8', fontSize: '10px' }}>{debug}</p>
     </Container>
   );
 };
