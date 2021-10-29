@@ -141,6 +141,8 @@ const Canvas:FC<Props> = (props) => {
     setIsDrawing(true);
   }
 
+  const [debug, setDebug] = useState('');
+
   function draw(event: ReactEvent) {
     if (!isDrawing) return;
 
@@ -156,6 +158,8 @@ const Canvas:FC<Props> = (props) => {
 
     const pointerX = (pageX - offsetLeft) * resizeRatio;
     const pointerY = (pageY - offsetTop) * resizeRatio;
+
+    setDebug(`pointerY:${pointerY}, pageY:${pageY}, offsetTop:${offsetTop}, windowHeight:${windowHeight}, offsetHeight:${offsetHeight}, resizeRatio:${resizeRatio}`);
 
     contextRef.current?.lineTo(pointerX, pointerY);
     contextRef.current?.stroke();
@@ -211,6 +215,7 @@ const Canvas:FC<Props> = (props) => {
         onTouchMove={draw}
         onTouchEnd={stopDrawing}
       />
+      <p style={{ color: '#e0d8d8' }}>{debug}</p>
     </Container>
   );
 };
