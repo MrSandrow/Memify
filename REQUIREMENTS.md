@@ -1,5 +1,8 @@
 # Requirements
 
+Preload Montserrat font
+Inside Canvas.tsx : Add getPointerCoordinates() and rename variables inside the function
+
 ### Features
 
 - Reset the canvas (Ask for confirmation before resetting the canvas)

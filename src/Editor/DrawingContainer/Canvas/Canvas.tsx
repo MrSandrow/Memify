@@ -11,14 +11,13 @@ interface ContainerProps {
 const Container = styled.div<ContainerProps>`
   /* The padding just below is here to fix a visual bug */
   display: flex;
+  flex-direction: column;
   height: 100%;
   margin: auto;
   max-height: ${(props) => props.maxHeight}px;
   max-width: ${(props) => props.maxWidth}px;
   padding: 0.05rem;
   width: 100%;
-
-  flex-direction: column;
 `;
 
 const CanvasElement = styled.canvas`
@@ -143,8 +142,6 @@ const Canvas:FC<Props> = (props) => {
     setIsDrawing(true);
   }
 
-  // const [debug, setDebug] = useState('');
-
   function draw(event: ReactEvent) {
     if (!isDrawing) return;
 
@@ -160,8 +157,6 @@ const Canvas:FC<Props> = (props) => {
 
     const pointerX = (pageX - offsetLeft) * resizeRatio;
     const pointerY = (pageY - offsetTop) * resizeRatio;
-
-    // setDebug(`pointerY:${Math.floor(pointerY)}, pageY:${Math.floor(pageY)}, offsetTop:${Math.floor(offsetTop)}, windowHeight:${Math.floor(windowHeight)}, offsetHeight:${Math.floor(offsetHeight)}, resizeRatio:${Math.floor(resizeRatio)}`);
 
     contextRef.current?.lineTo(pointerX, pointerY);
     contextRef.current?.stroke();
@@ -217,7 +212,6 @@ const Canvas:FC<Props> = (props) => {
         onTouchMove={draw}
         onTouchEnd={stopDrawing}
       />
-      {/* <p style={{ color: '#e0d8d8', fontSize: '8px' }}>{debug}</p> */}
     </Container>
   );
 };
