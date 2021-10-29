@@ -18,7 +18,7 @@ const Container = styled.div<ContainerProps>`
   padding: 0.05rem;
   width: 100%;
 
-  /* flex-direction: column; */
+  flex-direction: column;
 `;
 
 const CanvasElement = styled.canvas`
