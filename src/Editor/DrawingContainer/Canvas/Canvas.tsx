@@ -130,10 +130,10 @@ const Canvas:FC<Props> = (props) => {
     const offsetLeft = (windowWidth - offsetWidth) / 2;
     const offsetTop = (windowHeight - offsetHeight) / 2;
 
-    const { clientX, clientY } = reactEvent;
+    const { pageX, pageY } = reactEvent;
 
-    const pointerX = (clientX - offsetLeft) * resizeRatio;
-    const pointerY = (clientY - offsetTop) * resizeRatio;
+    const pointerX = (pageX - offsetLeft) * resizeRatio;
+    const pointerY = (pageY - offsetTop) * resizeRatio;
 
     contextRef.current?.beginPath();
     contextRef.current?.moveTo(pointerX, pointerY);
@@ -152,10 +152,10 @@ const Canvas:FC<Props> = (props) => {
     const offsetLeft = (windowWidth - offsetWidth) / 2;
     const offsetTop = (windowHeight - offsetHeight) / 2;
 
-    const { clientX, clientY } = reactEvent;
+    const { pageX, pageY } = reactEvent;
 
-    const pointerX = (clientX - offsetLeft) * resizeRatio;
-    const pointerY = (clientY - offsetTop) * resizeRatio;
+    const pointerX = (pageX - offsetLeft) * resizeRatio;
+    const pointerY = (pageY - offsetTop) * resizeRatio;
 
     contextRef.current?.lineTo(pointerX, pointerY);
     contextRef.current?.stroke();
@@ -181,10 +181,10 @@ const Canvas:FC<Props> = (props) => {
     const offsetLeft = (windowWidth - offsetWidth) / 2;
     const offsetTop = (windowHeight - offsetHeight) / 2;
 
-    const { clientX, clientY } = reactEvent;
+    const { pageX, pageY } = reactEvent;
 
-    const pointerX = (clientX - offsetLeft) * resizeRatio;
-    const pointerY = (clientY - offsetTop) * resizeRatio;
+    const pointerX = (pageX - offsetLeft) * resizeRatio;
+    const pointerY = (pageY - offsetTop) * resizeRatio;
 
     const isHorizontallyInsideCanvas = pointerX > 0 && pointerX < (offsetWidth * resizeRatio);
     const isVerticallyInsideCanvas = pointerY > 0 && pointerY < (offsetHeight * resizeRatio);
