@@ -199,7 +199,7 @@ const Canvas:FC<Props> = (props) => {
   }
 
   return (
-    <Container maxWidth={canvasWidth / 2} maxHeight={canvasHeight / 2}>
+    <Container maxWidth={canvasWidth} maxHeight={canvasHeight}>
       <CanvasElement
         ref={canvasRef}
         data-testid="canvas"
@@ -217,7 +217,7 @@ const Canvas:FC<Props> = (props) => {
         onTouchMove={draw}
         onTouchEnd={stopDrawing}
       />
-      <p style={{ color: '#e0d8d8', fontSize: '10px' }}>{debug}</p>
+      <p style={{ color: '#e0d8d8', fontSize: '8px' }}>{debug}</p>
     </Container>
   );
 };
