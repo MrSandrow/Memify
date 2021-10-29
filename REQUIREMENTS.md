@@ -1,7 +1,8 @@
 # Requirements
 
-Preload Montserrat font
-Inside Canvas.tsx : Add getPointerCoordinates() and rename variables inside the function
+- Preload Montserrat font
+- Inside Canvas.tsx : Add getPointerCoordinates() & Rename variables inside this function
+- Inside Canvas.tsx : Understand why `flex-direction: column` fixes the bug & Explain it in a comment (pointerY isn't half its value anymore)
 
 ### Features
 
