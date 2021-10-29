@@ -27,6 +27,7 @@ const CanvasElement = styled.canvas`
   max-height: 100%;
   max-width: 100%;
   touch-action: none;
+  user-select: none;
 `;
 
 interface Props {
@@ -124,10 +125,13 @@ const Canvas:FC<Props> = (props) => {
     const reactEvent = 'touches' in event ? event.touches[0] : event;
 
     const { offsetWidth, offsetHeight } = reactEvent.target as HTMLCanvasElement;
-    const offsetLeft = (window.innerWidth - offsetWidth) / 2;
-    const offsetTop = (window.innerHeight - offsetHeight) / 2;
+    const { clientHeight: windowHeight, clientWidth: windowWidth } = document.documentElement;
+
+    const offsetLeft = (windowWidth - offsetWidth) / 2;
+    const offsetTop = (windowHeight - offsetHeight) / 2;
 
     const { clientX, clientY } = reactEvent;
+
     const pointerX = (clientX - offsetLeft) * resizeRatio;
     const pointerY = (clientY - offsetTop) * resizeRatio;
 
@@ -143,10 +147,13 @@ const Canvas:FC<Props> = (props) => {
     const reactEvent = 'touches' in event ? event.touches[0] : event;
 
     const { offsetWidth, offsetHeight } = reactEvent.target as HTMLCanvasElement;
-    const offsetLeft = (window.innerWidth - offsetWidth) / 2;
-    const offsetTop = (window.innerHeight - offsetHeight) / 2;
+    const { clientHeight: windowHeight, clientWidth: windowWidth } = document.documentElement;
+
+    const offsetLeft = (windowWidth - offsetWidth) / 2;
+    const offsetTop = (windowHeight - offsetHeight) / 2;
 
     const { clientX, clientY } = reactEvent;
+
     const pointerX = (clientX - offsetLeft) * resizeRatio;
     const pointerY = (clientY - offsetTop) * resizeRatio;
 
@@ -169,10 +176,13 @@ const Canvas:FC<Props> = (props) => {
     const reactEvent = 'touches' in event ? event.touches[0] : event;
 
     const { offsetWidth, offsetHeight } = reactEvent.target as HTMLCanvasElement;
-    const offsetLeft = (window.innerWidth - offsetWidth) / 2;
-    const offsetTop = (window.innerHeight - offsetHeight) / 2;
+    const { clientHeight: windowHeight, clientWidth: windowWidth } = document.documentElement;
+
+    const offsetLeft = (windowWidth - offsetWidth) / 2;
+    const offsetTop = (windowHeight - offsetHeight) / 2;
 
     const { clientX, clientY } = reactEvent;
+
     const pointerX = (clientX - offsetLeft) * resizeRatio;
     const pointerY = (clientY - offsetTop) * resizeRatio;
 
