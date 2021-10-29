@@ -159,7 +159,7 @@ const Canvas:FC<Props> = (props) => {
     const pointerX = (pageX - offsetLeft) * resizeRatio;
     const pointerY = (pageY - offsetTop) * resizeRatio;
 
-    setDebug(`pointerY:${pointerY}, pageY:${pageY}, offsetTop:${offsetTop}, windowHeight:${windowHeight}, offsetHeight:${offsetHeight}, resizeRatio:${resizeRatio}`);
+    setDebug(`pointerX:${pointerX}, pageX:${pageX}, offsetLeft:${offsetLeft}, windowWidth:${windowWidth}, offsetWidth:${offsetWidth}, resizeRatio:${resizeRatio}`);
 
     contextRef.current?.lineTo(pointerX, pointerY);
     contextRef.current?.stroke();
