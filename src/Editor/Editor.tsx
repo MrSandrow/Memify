@@ -8,13 +8,11 @@ import ToolbarContainer from './ToolbarContainer/ToolbarContainer';
 
 const navigationContainerHeight = '4rem';
 const toolbarContainerHeight = '4rem';
-const drawingContainerHeight = `calc(100% - ${navigationContainerHeight} - ${toolbarContainerHeight})`;
+const drawingContainerHeight = `max(12rem, calc(100vh - ${navigationContainerHeight} - ${toolbarContainerHeight}))`;
 
 const Container = styled.div`
   display: grid;
   grid-template-rows: ${navigationContainerHeight} ${drawingContainerHeight} ${toolbarContainerHeight};
-  height: 100%;
-  width: 100%;
 `;
 
 const Editor:FC = () => {

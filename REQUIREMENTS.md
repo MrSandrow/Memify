@@ -1,9 +1,5 @@
 # Requirements
 
-- Preload Montserrat font
-- Inside Canvas.tsx : Add getPointerCoordinates() & Rename variables inside this function
-- Inside Canvas.tsx : Understand why `flex-direction: column` fixes the bug & Explain it in a comment (pointerY isn't half its value anymore)
-
 ### Features
 
 - Reset the canvas (Ask for confirmation before resetting the canvas)
@@ -12,6 +8,7 @@
 - Add a special color for disabled icons in the toolbar
 - Display a warning when closing the page without having previously downloaded the drawing
 - Decide if I should replace useState with useContext
+- Preload 'Montserrat' font
 
 - Implement the burger menu
 - Sign In / Sign Up / Sign Out

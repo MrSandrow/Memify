@@ -11,7 +11,6 @@ interface ContainerProps {
 const Container = styled.div<ContainerProps>`
   /* The padding just below is here to fix a visual bug */
   display: flex;
-  flex-direction: column;
   height: 100%;
   margin: auto;
   max-height: ${(props) => props.maxHeight}px;
@@ -122,19 +121,23 @@ const Canvas:FC<Props> = (props) => {
   type ReactEvent = MouseEvent | TouchEvent;
   const [isDrawing, setIsDrawing] = useState(false);
 
-  function startDrawing(event: ReactEvent) {
+  function getPointerCoordinates(event: ReactEvent) {
     const reactEvent = 'touches' in event ? event.touches[0] : event;
+    const canvas = reactEvent.target as HTMLCanvasElement;
 
-    const { offsetWidth, offsetHeight } = reactEvent.target as HTMLCanvasElement;
-    const { clientHeight: windowHeight, clientWidth: windowWidth } = document.documentElement;
+    const { clientX, clientY } = reactEvent;
 
-    const offsetLeft = (windowWidth - offsetWidth) / 2;
-    const offsetTop = (windowHeight - offsetHeight) / 2;
+    const { left: canvasHorizontalOffset } = canvas.getBoundingClientRect();
+    const { top: canvasVerticalOffset } = canvas.getBoundingClientRect();
 
-    const { pageX, pageY } = reactEvent;
+    const pointerX = (clientX - canvasHorizontalOffset) * resizeRatio;
+    const pointerY = (clientY - canvasVerticalOffset) * resizeRatio;
 
-    const pointerX = (pageX - offsetLeft) * resizeRatio;
-    const pointerY = (pageY - offsetTop) * resizeRatio;
+    return { pointerX, pointerY };
+  }
+
+  function startDrawing(event: ReactEvent) {
+    const { pointerX, pointerY } = getPointerCoordinates(event);
 
     contextRef.current?.beginPath();
     contextRef.current?.moveTo(pointerX, pointerY);
@@ -145,18 +148,7 @@ const Canvas:FC<Props> = (props) => {
   function draw(event: ReactEvent) {
     if (!isDrawing) return;
 
-    const reactEvent = 'touches' in event ? event.touches[0] : event;
-
-    const { offsetWidth, offsetHeight } = reactEvent.target as HTMLCanvasElement;
-    const { clientHeight: windowHeight, clientWidth: windowWidth } = document.documentElement;
-
-    const offsetLeft = (windowWidth - offsetWidth) / 2;
-    const offsetTop = (windowHeight - offsetHeight) / 2;
-
-    const { pageX, pageY } = reactEvent;
-
-    const pointerX = (pageX - offsetLeft) * resizeRatio;
-    const pointerY = (pageY - offsetTop) * resizeRatio;
+    const { pointerX, pointerY } = getPointerCoordinates(event);
 
     contextRef.current?.lineTo(pointerX, pointerY);
     contextRef.current?.stroke();
@@ -174,21 +166,13 @@ const Canvas:FC<Props> = (props) => {
   }
 
   function isPointerInsideCanvas(event: ReactEvent) {
-    const reactEvent = 'touches' in event ? event.touches[0] : event;
+    const { pointerX, pointerY } = getPointerCoordinates(event);
 
-    const { offsetWidth, offsetHeight } = reactEvent.target as HTMLCanvasElement;
-    const { clientHeight: windowHeight, clientWidth: windowWidth } = document.documentElement;
+    const { offsetWidth: targetWidth } = event.target as HTMLCanvasElement;
+    const { offsetHeight: targetHeight } = event.target as HTMLCanvasElement;
 
-    const offsetLeft = (windowWidth - offsetWidth) / 2;
-    const offsetTop = (windowHeight - offsetHeight) / 2;
-
-    const { pageX, pageY } = reactEvent;
-
-    const pointerX = (pageX - offsetLeft) * resizeRatio;
-    const pointerY = (pageY - offsetTop) * resizeRatio;
-
-    const isHorizontallyInsideCanvas = pointerX > 0 && pointerX < (offsetWidth * resizeRatio);
-    const isVerticallyInsideCanvas = pointerY > 0 && pointerY < (offsetHeight * resizeRatio);
+    const isHorizontallyInsideCanvas = pointerX > 0 && pointerX < (targetWidth * resizeRatio);
+    const isVerticallyInsideCanvas = pointerY > 0 && pointerY < (targetHeight * resizeRatio);
 
     return isHorizontallyInsideCanvas && isVerticallyInsideCanvas;
   }
