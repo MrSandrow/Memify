@@ -71,6 +71,7 @@ const Canvas:FC<Props> = (props) => {
   /* Makes sure that the line that is being drawn will always
   be under the mouse pointer, even after resizing the canvas. */
 
+  const [debug, setDebug] = useState('');
   const [resizeRatio, setResizeRatio] = useState(1);
 
   useEffect(() => {
@@ -81,6 +82,7 @@ const Canvas:FC<Props> = (props) => {
       const newCanvasWidth = canvas.offsetWidth;
 
       setResizeRatio(initialCanvasWidth / newCanvasWidth);
+      setDebug(`initialCanvasWidth : ${Math.floor(initialCanvasWidth)}, newCanvasWidth : ${Math.floor(newCanvasWidth)}`);
     });
 
     if (!canvasRef.current) return undefined;
@@ -121,8 +123,6 @@ const Canvas:FC<Props> = (props) => {
   type ReactEvent = MouseEvent | TouchEvent;
   const [isDrawing, setIsDrawing] = useState(false);
 
-  const [debug, setDebug] = useState('');
-
   function getPointerCoordinates(event: ReactEvent) {
     const reactEvent = 'touches' in event ? event.touches[0] : event;
     const canvas = reactEvent.target as HTMLCanvasElement;
@@ -134,8 +134,6 @@ const Canvas:FC<Props> = (props) => {
 
     const pointerX = (clientX - canvasHorizontalOffset) * resizeRatio;
     const pointerY = (clientY - canvasVerticalOffset) * resizeRatio;
-
-    setDebug(`pointerY : ${Math.floor(pointerY)}, clientY : ${Math.floor(clientY)}, canvasVerticalOffset : ${Math.floor(canvasVerticalOffset)}, resizeRatio : ${Math.floor(resizeRatio)}`);
 
     return { pointerX, pointerY };
   }
