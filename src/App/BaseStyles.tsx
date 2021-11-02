@@ -12,12 +12,21 @@ const BaseStyles = createGlobalStyle`
   
   html {
     font-family: 'Montserrat', sans-serif;
+    height: 100%;
+  }
+
+  body {
+    height: 100%;
   }
 
   button {
     border: none;
     cursor: pointer;
     font-family: inherit;
+  }
+
+  #root {
+    height: 100%;
   }
 `;
 
