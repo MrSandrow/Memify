@@ -23,11 +23,13 @@ const CanvasElement = styled.canvas`
   background: white;
   border-radius: 0.25rem;
   cursor: crosshair;
+  height: auto;
   margin: auto;
   max-height: 100%;
   max-width: 100%;
   touch-action: none;
   user-select: none;
+  width: auto;
 `;
 
 interface Props {
