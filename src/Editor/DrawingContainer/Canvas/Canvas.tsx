@@ -19,17 +19,22 @@ const Container = styled.div<ContainerProps>`
   width: 100%;
 `;
 
-const CanvasElement = styled.canvas`
+interface CanvasElementProps {
+  styledWidth: number;
+  styledHeight: number;
+}
+
+const CanvasElement = styled.canvas<CanvasElementProps>`
   background: white;
   border-radius: 0.25rem;
   cursor: crosshair;
-  height: min-content;
+  height: ${(props) => props.styledHeight}px;
   margin: auto;
   max-height: 100%;
   max-width: 100%;
   touch-action: none;
   user-select: none;
-  width: min-content;
+  width: ${(props) => props.styledWidth}px;
 `;
 
 interface Props {
@@ -42,6 +47,7 @@ interface Props {
 }
 
 const Canvas:FC<Props> = (props) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const contextRef = useRef<CanvasRenderingContext2D | null>(null);
 
@@ -78,20 +84,25 @@ const Canvas:FC<Props> = (props) => {
 
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
-      const canvas = entries[0].target as HTMLCanvasElement;
+      const container = entries[0].target as HTMLCanvasElement;
 
       const initialCanvasWidth = canvasWidth;
-      const newCanvasWidth = canvas.offsetWidth;
+      const newCanvasWidth = container.offsetWidth;
+      const horizontalResizeRatio = initialCanvasWidth / newCanvasWidth;
 
-      setResizeRatio(initialCanvasWidth / newCanvasWidth);
-      setDebug(`initialCanvasWidth : ${Math.floor(initialCanvasWidth)}, newCanvasWidth : ${Math.floor(newCanvasWidth)}`);
+      const initialCanvasHeight = canvasHeight;
+      const newCanvasHeight = container.offsetHeight;
+      const verticalResizeRatio = initialCanvasHeight / newCanvasHeight;
+
+      setResizeRatio(Math.max(horizontalResizeRatio, verticalResizeRatio));
+      setDebug(`resizeRatio : ${Math.max(horizontalResizeRatio, verticalResizeRatio)}`);
     });
 
-    if (!canvasRef.current) return undefined;
-    observer.observe(canvasRef.current);
+    if (!containerRef.current) return undefined;
+    observer.observe(containerRef.current);
 
     return () => observer.disconnect();
-  }, [canvasWidth]);
+  }, [canvasWidth, canvasHeight]);
 
   /* Downloads the canvas when needed */
 
@@ -182,7 +193,11 @@ const Canvas:FC<Props> = (props) => {
   }
 
   return (
-    <Container maxWidth={canvasWidth} maxHeight={canvasHeight}>
+    <Container
+      ref={containerRef}
+      maxWidth={canvasWidth}
+      maxHeight={canvasHeight}
+    >
       <CanvasElement
         ref={canvasRef}
         data-testid="canvas"
@@ -190,6 +205,9 @@ const Canvas:FC<Props> = (props) => {
         to allow the canvas to handle high resolution screens */
         width={canvasWidth * 2}
         height={canvasHeight * 2}
+        /* Ensures the canvas keeps the same aspect ratio after resizing the window */
+        styledWidth={canvasWidth / resizeRatio}
+        styledHeight={canvasHeight / resizeRatio}
         /* Mouse Events */
         onMouseDown={startDrawing}
         onMouseMove={draw}
