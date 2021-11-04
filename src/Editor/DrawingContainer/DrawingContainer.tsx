@@ -7,6 +7,8 @@ import Canvas from './Canvas/Canvas';
 import PenMenu from './PenMenu/PenMenu';
 
 const Container = styled.div`
+  /* The border below is here to fix a visual bug */
+  border: 0.1rem solid #161616;
   display: flex;
   height: calc(100% - 2.25rem);
   margin: auto;
@@ -35,8 +37,11 @@ const DrawingContainer:FC<Props> = (props) => {
     const container = containerRef.current;
     if (!container) return;
 
-    setCanvasWidth(container.offsetWidth);
-    setCanvasHeight(container.offsetHeight);
+    const containerWidth = Math.floor(container.getBoundingClientRect().width);
+    const containerHeight = Math.floor(container.getBoundingClientRect().height);
+
+    setCanvasWidth(containerWidth);
+    setCanvasHeight(containerHeight);
   }, []);
 
   return (

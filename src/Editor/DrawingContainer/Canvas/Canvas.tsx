@@ -9,13 +9,11 @@ interface ContainerProps {
 }
 
 const Container = styled.div<ContainerProps>`
-  /* The padding below is here to fix a visual bug */
   display: flex;
   height: 100%;
   margin: auto;
   max-height: ${(props) => props.maxHeight}px;
   max-width: ${(props) => props.maxWidth}px;
-  padding: 0.05rem;
   width: 100%;
 `;
 
@@ -86,11 +84,11 @@ const Canvas:FC<Props> = (props) => {
       const container = entries[0].target as HTMLCanvasElement;
 
       const initialCanvasWidth = canvasWidth;
-      const newCanvasWidth = container.offsetWidth;
+      const newCanvasWidth = Math.floor(container.getBoundingClientRect().width);
       const horizontalResizeRatio = initialCanvasWidth / newCanvasWidth;
 
       const initialCanvasHeight = canvasHeight;
-      const newCanvasHeight = container.offsetHeight;
+      const newCanvasHeight = Math.floor(container.getBoundingClientRect().height);
       const verticalResizeRatio = initialCanvasHeight / newCanvasHeight;
 
       setResizeRatio(Math.max(horizontalResizeRatio, verticalResizeRatio));
@@ -138,10 +136,11 @@ const Canvas:FC<Props> = (props) => {
     const reactEvent = 'touches' in event ? event.touches[0] : event;
     const canvas = reactEvent.target as HTMLCanvasElement;
 
-    const { clientX, clientY } = reactEvent;
+    const clientX = Math.floor(reactEvent.clientX);
+    const clientY = Math.floor(reactEvent.clientY);
 
-    const { left: canvasHorizontalOffset } = canvas.getBoundingClientRect();
-    const { top: canvasVerticalOffset } = canvas.getBoundingClientRect();
+    const canvasHorizontalOffset = Math.floor(canvas.getBoundingClientRect().left);
+    const canvasVerticalOffset = Math.floor(canvas.getBoundingClientRect().top);
 
     const pointerX = (clientX - canvasHorizontalOffset) * resizeRatio;
     const pointerY = (clientY - canvasVerticalOffset) * resizeRatio;
@@ -200,8 +199,8 @@ const Canvas:FC<Props> = (props) => {
         width={canvasWidth * 2}
         height={canvasHeight * 2}
         /* Ensures the canvas keeps the same aspect ratio after resizing the window */
-        styledWidth={canvasWidth / resizeRatio}
-        styledHeight={canvasHeight / resizeRatio}
+        styledWidth={Math.floor(canvasWidth / resizeRatio)}
+        styledHeight={Math.floor(canvasHeight / resizeRatio)}
         /* Mouse Events */
         onMouseDown={startDrawing}
         onMouseMove={draw}
