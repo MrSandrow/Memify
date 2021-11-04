@@ -4,7 +4,6 @@
 
 - Reset the canvas (Ask for confirmation before resetting the canvas)
 - Revert Changes
-- Upload an image as a background
 - Add a special color for disabled icons in the toolbar
 - Display a warning when closing the page without having previously downloaded the drawing
 - Decide if I should replace useState with useContext

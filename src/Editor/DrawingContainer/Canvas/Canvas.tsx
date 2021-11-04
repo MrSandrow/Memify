@@ -9,7 +9,7 @@ interface ContainerProps {
 }
 
 const Container = styled.div<ContainerProps>`
-  /* The padding just below is here to fix a visual bug */
+  /* The padding below is here to fix a visual bug */
   display: flex;
   height: 100%;
   margin: auto;
@@ -76,10 +76,9 @@ const Canvas:FC<Props> = (props) => {
     return () => context.resetTransform();
   }, [canvasWidth, canvasHeight, penColor, penThickness]);
 
-  /* Makes sure that the line that is being drawn will always
+  /* Ensures that the line that is being drawn will always
   be under the mouse pointer, even after resizing the canvas. */
 
-  const [debug, setDebug] = useState('');
   const [resizeRatio, setResizeRatio] = useState(1);
 
   useEffect(() => {
@@ -95,7 +94,6 @@ const Canvas:FC<Props> = (props) => {
       const verticalResizeRatio = initialCanvasHeight / newCanvasHeight;
 
       setResizeRatio(Math.max(horizontalResizeRatio, verticalResizeRatio));
-      setDebug(`resizeRatio : ${Math.max(horizontalResizeRatio, verticalResizeRatio)}`);
     });
 
     if (!containerRef.current) return undefined;
@@ -193,11 +191,7 @@ const Canvas:FC<Props> = (props) => {
   }
 
   return (
-    <Container
-      ref={containerRef}
-      maxWidth={canvasWidth}
-      maxHeight={canvasHeight}
-    >
+    <Container ref={containerRef} maxWidth={canvasWidth} maxHeight={canvasHeight}>
       <CanvasElement
         ref={canvasRef}
         data-testid="canvas"
@@ -218,7 +212,6 @@ const Canvas:FC<Props> = (props) => {
         onTouchMove={draw}
         onTouchEnd={stopDrawing}
       />
-      <p style={{ position: 'absolute', color: 'red' }}>{debug}</p>
     </Container>
   );
 };
