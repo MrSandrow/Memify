@@ -7,8 +7,6 @@ import Canvas from './Canvas/Canvas';
 import PenMenu from './PenMenu/PenMenu';
 
 const Container = styled.div`
-  /* The border below is here to fix a visual bug */
-  border: 0.1rem solid #161616;
   display: flex;
   height: calc(100% - 2.25rem);
   margin: auto;

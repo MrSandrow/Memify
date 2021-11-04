@@ -23,8 +23,10 @@ interface CanvasElementProps {
 }
 
 const CanvasElement = styled.canvas<CanvasElementProps>`
+  /* The border-radius below has to be slightly greater than the border-radius
+  applied to PenMenu.tsx in order to work around a visual bug in some browsers. */
   background: white;
-  border-radius: 0.25rem;
+  border-radius: 0.4rem;
   cursor: crosshair;
   height: ${(props) => props.styledHeight}px;
   margin: auto;
