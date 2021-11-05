@@ -22,20 +22,31 @@ const Container = styled.div`
 `;
 
 interface Props {
+  shouldDisplayPenMenu: boolean;
   setShouldDisplayPenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  setShouldResetCanvas: React.Dispatch<React.SetStateAction<boolean>>;
   setShouldDownloadCanvas: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ToolbarContainer:FC<Props> = (props) => {
-  const { setShouldDisplayPenMenu, setShouldDownloadCanvas } = props;
+  const { shouldDisplayPenMenu, setShouldDisplayPenMenu } = props;
+  const { setShouldResetCanvas } = props;
+  const { setShouldDownloadCanvas } = props;
 
   return (
     <Container>
       <UndoButton />
       <RedoButton />
-      <PenButton setShouldDisplayPenMenu={setShouldDisplayPenMenu} />
-      <ResetButton />
-      <DownloadButton setShouldDownloadCanvas={setShouldDownloadCanvas} />
+      <PenButton
+        shouldDisplayPenMenu={shouldDisplayPenMenu}
+        setShouldDisplayPenMenu={setShouldDisplayPenMenu}
+      />
+      <ResetButton
+        setShouldResetCanvas={setShouldResetCanvas}
+      />
+      <DownloadButton
+        setShouldDownloadCanvas={setShouldDownloadCanvas}
+      />
     </Container>
   );
 };

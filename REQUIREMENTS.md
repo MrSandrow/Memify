@@ -2,12 +2,7 @@
 
 ### Features
 
-- Reset the canvas (Ask for confirmation before resetting the canvas)
 - Revert Changes
-- Add a special color for disabled icons in the toolbar
-- Display a warning when closing the page without having previously downloaded the drawing
-- Decide if I should replace useState with useContext
-- Preload 'Montserrat' font
 
 - Implement the burger menu
 - Sign In / Sign Up / Sign Out
@@ -16,7 +11,6 @@
 - Redirect users to the sign in page if they try to visit a 'signed in only' page without being logged in
 
 - Save a drawing to the dashboard (Drafts)
-- Display the name of the drawing (if it is not untitled) instead of the app's logo
 - Change the drawing's name by clicking on it (limit name length)
 - Create the app in a way that makes it easy to add more color themes afterwards (Apply to Buttons and Important UI Elements)
 - Access the dashboard (Featuring Different Screens : Drafts & Trash & Account Settings)
@@ -38,7 +32,7 @@
 - Move drawings into folders (Using Context Menu / Drap & Drop)
 - Add a few color themes (Green, Blue, Red...)
 
-- Add 'Inspiration' and 'Bookmarked Memes' screens to the dashboard
+- Add 'Inspiration' and 'Bookmarked Drawings' screens to the dashboard
 - Browse, Filter and Bookmark popular drawings requested from a third party API (On the Inspiration screen)
 - Add Three.js animations where it looks good
 
@@ -63,8 +57,9 @@
 ### Features
 
 - Draw on the canvas
-- Download the canvas
 - Change pen color & thickness
+- Reset the canvas
+- Download the canvas
 
 ### Tools
 

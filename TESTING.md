@@ -48,9 +48,9 @@ Workflow - Editor (Repeat this workflow for both device orientations / window si
 - Change pen thickness
 - Close PenMenu by clicking on PenButton
 - Download the drawing
-- While holding the pointer down : draw on the canvas, move the pointer outside the canvas, move the pointer inside the canvas again
-- Open PenMenu by clicking on PenButton
-- Close PenMenu by clicking on PenButton
+- Repeat this step in the 4 directions : While holding the pointer down, draw on the canvas, move the pointer outside the canvas, move the pointer inside the canvas again
+- Open & Close PenMenu by clicking on PenButton
 - Rotate the device / Resize the window
-- Open PenMenu by clicking on PenButton
-- Close PenMenu by clicking on PenButton
+- Open & Close PenMenu by clicking on PenButton
+- Reset the canvas
+- Draw a line on the canvas

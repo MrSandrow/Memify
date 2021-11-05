@@ -42,6 +42,10 @@ interface Props {
   canvasHeight: number;
   penColor: string;
   penThickness: number;
+  /* Resets the canvas */
+  shouldResetCanvas: boolean;
+  setShouldResetCanvas: React.Dispatch<React.SetStateAction<boolean>>;
+  /* Downloads the canvas */
   shouldDownloadCanvas: boolean;
   setShouldDownloadCanvas: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -102,7 +106,26 @@ const Canvas:FC<Props> = (props) => {
     return () => observer.disconnect();
   }, [canvasWidth, canvasHeight]);
 
-  /* Downloads the canvas when needed */
+  /* Resets the canvas */
+
+  const { shouldResetCanvas, setShouldResetCanvas } = props;
+
+  useEffect(() => {
+    if (!shouldResetCanvas) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, canvasWidth, canvasHeight);
+
+    setShouldResetCanvas(false);
+  }, [shouldResetCanvas]);
+
+  /* Downloads the canvas */
 
   const { shouldDownloadCanvas, setShouldDownloadCanvas } = props;
 
@@ -121,10 +144,14 @@ const Canvas:FC<Props> = (props) => {
     context.fillRect(0, 0, canvasWidth, canvasHeight);
     context.globalCompositeOperation = 'source-over';
 
-    const a = document.createElement('a');
-    a.href = canvas.toDataURL();
-    a.download = 'Memify';
-    a.click();
+    canvas.toBlob((blob) => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'Memify';
+      a.click();
+
+      URL.revokeObjectURL(a.href);
+    });
 
     setShouldDownloadCanvas(false);
   }, [shouldDownloadCanvas]);

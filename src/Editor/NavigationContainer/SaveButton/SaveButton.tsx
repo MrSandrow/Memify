@@ -4,6 +4,12 @@ import { Save } from '@styled-icons/feather';
 
 const SaveIcon = styled(Save)`
   cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      color: #8f8f8f;
+    }
+  }
 `;
 
 const SaveButton:FC = () => (

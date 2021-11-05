@@ -19,6 +19,7 @@ const Container = styled.div`
 
 const Editor:FC = () => {
   const [shouldDisplayPenMenu, setShouldDisplayPenMenu] = useState(false);
+  const [shouldResetCanvas, setShouldResetCanvas] = useState(false);
   const [shouldDownloadCanvas, setShouldDownloadCanvas] = useState(false);
 
   return (
@@ -26,12 +27,22 @@ const Editor:FC = () => {
       <BaseStyles />
       <NavigationContainer />
       <DrawingContainer
+        /* Displays the pen menu */
         shouldDisplayPenMenu={shouldDisplayPenMenu}
+        /* Resets the canvas */
+        shouldResetCanvas={shouldResetCanvas}
+        setShouldResetCanvas={setShouldResetCanvas}
+        /* Downloads the canvas */
         shouldDownloadCanvas={shouldDownloadCanvas}
         setShouldDownloadCanvas={setShouldDownloadCanvas}
       />
       <ToolbarContainer
+        /* Displays the pen menu */
+        shouldDisplayPenMenu={shouldDisplayPenMenu}
         setShouldDisplayPenMenu={setShouldDisplayPenMenu}
+        /* Resets the canvas */
+        setShouldResetCanvas={setShouldResetCanvas}
+        /* Downloads the canvas */
         setShouldDownloadCanvas={setShouldDownloadCanvas}
       />
     </Container>

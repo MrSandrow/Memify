@@ -17,12 +17,17 @@ const Container = styled.div`
 
 interface Props {
   shouldDisplayPenMenu: boolean;
+  shouldResetCanvas: boolean;
+  setShouldResetCanvas: React.Dispatch<React.SetStateAction<boolean>>;
   shouldDownloadCanvas: boolean;
   setShouldDownloadCanvas: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const DrawingContainer:FC<Props> = (props) => {
-  const { shouldDisplayPenMenu, shouldDownloadCanvas, setShouldDownloadCanvas } = props;
+  const { shouldDisplayPenMenu } = props;
+
+  const { shouldResetCanvas, setShouldResetCanvas } = props;
+  const { shouldDownloadCanvas, setShouldDownloadCanvas } = props;
 
   const [penColor, setPenColor] = useState('#000000');
   const [penThickness, setPenThickness] = useState(2);
@@ -49,6 +54,10 @@ const DrawingContainer:FC<Props> = (props) => {
         canvasHeight={canvasHeight}
         penColor={penColor}
         penThickness={penThickness}
+        /* Resets the canvas */
+        shouldResetCanvas={shouldResetCanvas}
+        setShouldResetCanvas={setShouldResetCanvas}
+        /* Downloads the canvas */
         shouldDownloadCanvas={shouldDownloadCanvas}
         setShouldDownloadCanvas={setShouldDownloadCanvas}
       />

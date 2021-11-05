@@ -4,6 +4,12 @@ import { Download } from '@styled-icons/feather';
 
 const DownloadIcon = styled(Download)`
   cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      color: #8f8f8f;
+    }
+  }
 `;
 
 interface Props {

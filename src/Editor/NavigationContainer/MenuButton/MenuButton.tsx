@@ -4,6 +4,12 @@ import { Menu } from '@styled-icons/feather';
 
 const MenuIcon = styled(Menu)`
   cursor: pointer;
+  
+  @media (hover: hover) {
+    &:hover {
+      color: #8f8f8f;
+    }
+  }
 `;
 
 const MenuButton:FC = () => (
