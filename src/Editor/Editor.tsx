@@ -1,7 +1,6 @@
 import React, { FC, useState } from 'react';
-import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
-import BaseStyles from './BaseStyles';
 import NavigationContainer from './NavigationContainer/NavigationContainer';
 import DrawingContainer from './DrawingContainer/DrawingContainer';
 import ToolbarContainer from './ToolbarContainer/ToolbarContainer';
@@ -10,11 +9,17 @@ const navigationContainerHeight = '4rem';
 const toolbarContainerHeight = '4rem';
 const drawingContainerHeight = `calc(100% - ${navigationContainerHeight} - ${toolbarContainerHeight})`;
 
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: ${navigationContainerHeight} ${drawingContainerHeight} ${toolbarContainerHeight};
-  height: 100%;
-  width: 100%;
+const BaseStyles = createGlobalStyle`
+  html, body, #root {
+    height: 100%;
+    min-height: 20rem;
+  }
+
+  #root {
+    background: #161616;
+    display: grid;
+    grid-template-rows: ${navigationContainerHeight} ${drawingContainerHeight} ${toolbarContainerHeight};
+  }
 `;
 
 const Editor:FC = () => {
@@ -25,7 +30,7 @@ const Editor:FC = () => {
   const [shouldDownloadCanvas, setShouldDownloadCanvas] = useState(false);
 
   return (
-    <Container>
+    <>
       <BaseStyles />
       <NavigationContainer />
       <DrawingContainer
@@ -55,7 +60,7 @@ const Editor:FC = () => {
         /* Downloads the canvas */
         setShouldDownloadCanvas={setShouldDownloadCanvas}
       />
-    </Container>
+    </>
   );
 };
 

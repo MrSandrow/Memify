@@ -23,6 +23,7 @@ module.exports = {
 
   rules: {
     'import/no-extraneous-dependencies': 'off',
+    'jsx-a11y/anchor-is-valid': 'off',
   },
 
   overrides: [{

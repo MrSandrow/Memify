@@ -4,11 +4,6 @@
 
 - React
 - TypeScript
-- GraphQL
 - Firebase
 
-#### The main features are : 
-
-- 
-
-You can find the project's requirements in `REQUIREMENTS.md` and the testing process in `TESTING.md`
+You can find the project's features in `FEATURES.md` and the testing process in `TESTING.md`.

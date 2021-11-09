@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
 import FontStyles from './FontStyles';
-import BaseStyles from './BaseStyles';
+import ResetStyles from './ResetStyles';
 import Editor from '../Editor/Editor';
 
 const App: FC = () => (
   <>
     <FontStyles />
-    <BaseStyles />
+    <ResetStyles />
     <Editor />
   </>
 );

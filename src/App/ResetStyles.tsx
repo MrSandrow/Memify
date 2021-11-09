@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const BaseStyles = createGlobalStyle`
+const ResetStyles = createGlobalStyle`
   *,
   *::before,
   *::after {
@@ -12,11 +12,6 @@ const BaseStyles = createGlobalStyle`
   
   html {
     font-family: 'Montserrat', sans-serif;
-    height: 100%;
-  }
-
-  body {
-    height: 100%;
   }
 
   button {
@@ -24,10 +19,6 @@ const BaseStyles = createGlobalStyle`
     cursor: pointer;
     font-family: inherit;
   }
-
-  #root {
-    height: 100%;
-  }
 `;
 
-export default BaseStyles;
+export default ResetStyles;
