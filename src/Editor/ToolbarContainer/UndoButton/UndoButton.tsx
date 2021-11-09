@@ -12,8 +12,20 @@ const UndoIcon = styled(Undo)`
   }
 `;
 
-const UndoButton:FC = () => (
-  <UndoIcon size="1.5em" title="Undo" />
-);
+interface Props {
+  setShouldUndo: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const UndoButton:FC<Props> = (props) => {
+  const { setShouldUndo } = props;
+
+  return (
+    <UndoIcon
+      size="1.5em"
+      title="Undo"
+      onClick={() => setShouldUndo(true)}
+    />
+  );
+};
 
 export default UndoButton;

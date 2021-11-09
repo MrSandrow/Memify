@@ -42,6 +42,11 @@ interface Props {
   canvasHeight: number;
   penColor: string;
   penThickness: number;
+  /* Handles undo/redo in the canvas */
+  shouldUndo: boolean;
+  setShouldUndo: React.Dispatch<React.SetStateAction<boolean>>;
+  shouldRedo: boolean;
+  setShouldRedo: React.Dispatch<React.SetStateAction<boolean>>;
   /* Resets the canvas */
   shouldResetCanvas: boolean;
   setShouldResetCanvas: React.Dispatch<React.SetStateAction<boolean>>;
@@ -75,6 +80,12 @@ const Canvas:FC<Props> = (props) => {
     context.strokeStyle = penColor;
     context.lineWidth = penThickness;
 
+    /* Adds a white background to the canvas */
+    context.globalCompositeOperation = 'destination-over';
+    context.fillStyle = 'white';
+    context.fillRect(0, 0, canvasWidth, canvasHeight);
+    context.globalCompositeOperation = 'source-over';
+
     contextRef.current = context;
 
     return () => context.resetTransform();
@@ -106,12 +117,101 @@ const Canvas:FC<Props> = (props) => {
     return () => observer.disconnect();
   }, [canvasWidth, canvasHeight]);
 
+  /* Handles undo/redo in the canvas */
+
+  const [undoArray, setUndoArray] = useState<Blob[]>([]);
+  const [redoArray, setRedoArray] = useState<Blob[]>([]);
+
+  const saveCanvas = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      setUndoArray((currentArray) => [...currentArray, blob]);
+    });
+
+    /* Limits the size of undoArray to 100 items */
+    if (undoArray.length > 100) {
+      setUndoArray((currentArray) => currentArray.slice(1));
+    }
+
+    setRedoArray([]);
+  };
+
+  const { shouldUndo, setShouldUndo } = props;
+
+  useEffect(() => {
+    if (!shouldUndo) return;
+    setShouldUndo(false);
+
+    if (undoArray.length === 0) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const context = contextRef.current;
+    if (!context) return;
+
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      setRedoArray((currentArray) => [...currentArray, blob]);
+    });
+
+    const savedCanvas = undoArray[undoArray.length - 1];
+    const img = document.createElement('img');
+
+    img.src = URL.createObjectURL(savedCanvas);
+    img.onload = () => {
+      /* img dimensions have to be divided by two for this
+      feature to work properly when the canvas is scaled. */
+      context.drawImage(img, 0, 0, img.width / 2, img.height / 2);
+
+      URL.revokeObjectURL(img.src);
+      setUndoArray((currentArray) => currentArray.slice(0, -1));
+    };
+  }, [shouldUndo, undoArray]);
+
+  const { shouldRedo, setShouldRedo } = props;
+
+  useEffect(() => {
+    if (!shouldRedo) return;
+    setShouldRedo(false);
+
+    if (redoArray.length === 0) return;
+
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const context = contextRef.current;
+    if (!context) return;
+
+    canvas.toBlob((blob) => {
+      if (!blob) return;
+      setUndoArray((currentArray) => [...currentArray, blob]);
+    });
+
+    const savedCanvas = redoArray[redoArray.length - 1];
+    const img = document.createElement('img');
+
+    img.src = URL.createObjectURL(savedCanvas);
+    img.onload = () => {
+      /* img dimensions have to be divided by two for this
+      feature to work properly when the canvas is scaled. */
+      context.drawImage(img, 0, 0, img.width / 2, img.height / 2);
+
+      URL.revokeObjectURL(img.src);
+      setRedoArray((currentArray) => currentArray.slice(0, -1));
+    };
+  }, [shouldRedo, redoArray]);
+
   /* Resets the canvas */
 
   const { shouldResetCanvas, setShouldResetCanvas } = props;
 
   useEffect(() => {
     if (!shouldResetCanvas) return;
+    setShouldResetCanvas(false);
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -119,10 +219,12 @@ const Canvas:FC<Props> = (props) => {
     const context = canvas.getContext('2d');
     if (!context) return;
 
+    /* Saves the canvas before modifying it,
+    in order for the undo feature to work. */
+    saveCanvas();
+
     context.fillStyle = 'white';
     context.fillRect(0, 0, canvasWidth, canvasHeight);
-
-    setShouldResetCanvas(false);
   }, [shouldResetCanvas]);
 
   /* Downloads the canvas */
@@ -131,18 +233,13 @@ const Canvas:FC<Props> = (props) => {
 
   useEffect(() => {
     if (!shouldDownloadCanvas) return;
+    setShouldDownloadCanvas(false);
 
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const context = canvas.getContext('2d');
     if (!context) return;
-
-    /* Adds a white background to the canvas */
-    context.globalCompositeOperation = 'destination-over';
-    context.fillStyle = 'white';
-    context.fillRect(0, 0, canvasWidth, canvasHeight);
-    context.globalCompositeOperation = 'source-over';
 
     canvas.toBlob((blob) => {
       const a = document.createElement('a');
@@ -152,8 +249,6 @@ const Canvas:FC<Props> = (props) => {
 
       URL.revokeObjectURL(a.href);
     });
-
-    setShouldDownloadCanvas(false);
   }, [shouldDownloadCanvas]);
 
   /* Drawing functions */
@@ -179,6 +274,10 @@ const Canvas:FC<Props> = (props) => {
 
   function startDrawing(event: ReactEvent) {
     const { pointerX, pointerY } = getPointerCoordinates(event);
+
+    /* Saves the canvas before modifying it,
+    in order for the undo feature to work. */
+    saveCanvas();
 
     contextRef.current?.beginPath();
     contextRef.current?.moveTo(pointerX, pointerY);

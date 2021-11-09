@@ -16,9 +16,17 @@ const Container = styled.div`
 `;
 
 interface Props {
+  /* Handles undo/redo in the canvas */
+  shouldUndo: boolean;
+  setShouldUndo: React.Dispatch<React.SetStateAction<boolean>>;
+  shouldRedo: boolean;
+  setShouldRedo: React.Dispatch<React.SetStateAction<boolean>>;
+  /* Displays the pen menu */
   shouldDisplayPenMenu: boolean;
+  /* Resets the canvas */
   shouldResetCanvas: boolean;
   setShouldResetCanvas: React.Dispatch<React.SetStateAction<boolean>>;
+  /* Downloads the canvas */
   shouldDownloadCanvas: boolean;
   setShouldDownloadCanvas: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -26,6 +34,8 @@ interface Props {
 const DrawingContainer:FC<Props> = (props) => {
   const { shouldDisplayPenMenu } = props;
 
+  const { shouldUndo, setShouldUndo } = props;
+  const { shouldRedo, setShouldRedo } = props;
   const { shouldResetCanvas, setShouldResetCanvas } = props;
   const { shouldDownloadCanvas, setShouldDownloadCanvas } = props;
 
@@ -54,6 +64,11 @@ const DrawingContainer:FC<Props> = (props) => {
         canvasHeight={canvasHeight}
         penColor={penColor}
         penThickness={penThickness}
+        /* Handles undo/redo in the canvas */
+        shouldUndo={shouldUndo}
+        setShouldUndo={setShouldUndo}
+        shouldRedo={shouldRedo}
+        setShouldRedo={setShouldRedo}
         /* Resets the canvas */
         shouldResetCanvas={shouldResetCanvas}
         setShouldResetCanvas={setShouldResetCanvas}

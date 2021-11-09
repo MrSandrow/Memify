@@ -12,8 +12,20 @@ const RedoIcon = styled(Redo)`
   }
 `;
 
-const RedoButton:FC = () => (
-  <RedoIcon size="1.5em" title="Redo" />
-);
+interface Props {
+  setShouldRedo: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const RedoButton:FC<Props> = (props) => {
+  const { setShouldRedo } = props;
+
+  return (
+    <RedoIcon
+      size="1.5em"
+      title="Redo"
+      onClick={() => setShouldRedo(true)}
+    />
+  );
+};
 
 export default RedoButton;

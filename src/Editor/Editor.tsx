@@ -18,6 +18,8 @@ const Container = styled.div`
 `;
 
 const Editor:FC = () => {
+  const [shouldUndo, setShouldUndo] = useState(false);
+  const [shouldRedo, setShouldRedo] = useState(false);
   const [shouldDisplayPenMenu, setShouldDisplayPenMenu] = useState(false);
   const [shouldResetCanvas, setShouldResetCanvas] = useState(false);
   const [shouldDownloadCanvas, setShouldDownloadCanvas] = useState(false);
@@ -27,6 +29,11 @@ const Editor:FC = () => {
       <BaseStyles />
       <NavigationContainer />
       <DrawingContainer
+        /* Handles undo/redo in the canvas */
+        shouldUndo={shouldUndo}
+        setShouldUndo={setShouldUndo}
+        shouldRedo={shouldRedo}
+        setShouldRedo={setShouldRedo}
         /* Displays the pen menu */
         shouldDisplayPenMenu={shouldDisplayPenMenu}
         /* Resets the canvas */
@@ -37,6 +44,9 @@ const Editor:FC = () => {
         setShouldDownloadCanvas={setShouldDownloadCanvas}
       />
       <ToolbarContainer
+        /* Handles undo/redo in the canvas */
+        setShouldUndo={setShouldUndo}
+        setShouldRedo={setShouldRedo}
         /* Displays the pen menu */
         shouldDisplayPenMenu={shouldDisplayPenMenu}
         setShouldDisplayPenMenu={setShouldDisplayPenMenu}

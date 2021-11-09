@@ -22,21 +22,33 @@ const Container = styled.div`
 `;
 
 interface Props {
+  /* Handles undo/redo in the canvas */
+  setShouldUndo: React.Dispatch<React.SetStateAction<boolean>>;
+  setShouldRedo: React.Dispatch<React.SetStateAction<boolean>>;
+  /* Displays the pen menu */
   shouldDisplayPenMenu: boolean;
   setShouldDisplayPenMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  /* Resets the canvas */
   setShouldResetCanvas: React.Dispatch<React.SetStateAction<boolean>>;
+  /* Downloads the canvas */
   setShouldDownloadCanvas: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const ToolbarContainer:FC<Props> = (props) => {
+  const { setShouldUndo } = props;
+  const { setShouldRedo } = props;
   const { shouldDisplayPenMenu, setShouldDisplayPenMenu } = props;
   const { setShouldResetCanvas } = props;
   const { setShouldDownloadCanvas } = props;
 
   return (
     <Container>
-      <UndoButton />
-      <RedoButton />
+      <UndoButton
+        setShouldUndo={setShouldUndo}
+      />
+      <RedoButton
+        setShouldRedo={setShouldRedo}
+      />
       <PenButton
         shouldDisplayPenMenu={shouldDisplayPenMenu}
         setShouldDisplayPenMenu={setShouldDisplayPenMenu}

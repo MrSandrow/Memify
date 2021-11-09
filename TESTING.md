@@ -39,7 +39,7 @@ Targeted Devices :
 - iPhone 12 + Portrait + Last iOS Version
 - Pixel 4 + Portrait + Last Android Version
 
-Workflow - Editor (Repeat this workflow for both device orientations / window sizes) : 
+Workflow - Editor (Repeat this workflow for both device orientations / window sizes) :
 
 - Draw a line on the canvas
 - Open PenMenu by clicking on PenButton
@@ -49,8 +49,10 @@ Workflow - Editor (Repeat this workflow for both device orientations / window si
 - Close PenMenu by clicking on PenButton
 - Download the drawing
 - Repeat this step in the 4 directions : While holding the pointer down, draw on the canvas, move the pointer outside the canvas, move the pointer inside the canvas again
+- Undo six times & Redo six times & Undo twice
 - Open & Close PenMenu by clicking on PenButton
 - Rotate the device / Resize the window
 - Open & Close PenMenu by clicking on PenButton
 - Reset the canvas
 - Draw a line on the canvas
+- Redo once & Undo three times & Redo three times

@@ -2,8 +2,6 @@
 
 ### Features
 
-- Revert Changes
-
 - Implement the burger menu
 - Sign In / Sign Up / Sign Out
 - Access & Edit & Save account settings (Username, Password, Profile Picture, Delete Account)
@@ -58,6 +56,7 @@
 
 - Draw on the canvas
 - Change pen color & thickness
+- Undo / Redo modifications done to the canvas
 - Reset the canvas
 - Download the canvas
 
