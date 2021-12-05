@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
-const ResetStyles = createGlobalStyle`
-  *,
-  *::before,
+const BaseStyles = createGlobalStyle`
+  *, 
+  *::before, 
   *::after {
     box-sizing: border-box;
     margin: 0;
@@ -10,15 +10,20 @@ const ResetStyles = createGlobalStyle`
     padding: 0;
   }
   
+  html, 
+  body, 
+  #root {
+    height: 100%;
+    min-height: 100%;
+  }
+
   html {
     font-family: 'Montserrat', sans-serif;
   }
 
-  button {
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
+  #root {
+    background: black;
   }
 `;
 
-export default ResetStyles;
+export default BaseStyles;

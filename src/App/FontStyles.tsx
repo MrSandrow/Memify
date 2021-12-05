@@ -1,8 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
-import montserratRegular from './fonts/Montserrat-Regular.ttf';
-import montserratBold from './fonts/Montserrat-Bold.ttf';
-import museoBold from './fonts/Museo-Bold.ttf';
+import montserratRegular from '../shared/fonts/Montserrat-Regular.ttf';
+import montserratBold from '../shared/fonts/Montserrat-Bold.ttf';
+import museoBold from '../shared/fonts/Museo-Bold.ttf';
 
 const FontStyles = createGlobalStyle`
   @font-face {
