@@ -14,20 +14,13 @@
 - Change screen using menu
 - Sign out
 
-## Drafts
+## Drawings
 
 - Create a new drawing from an image / blank background / sharing link (Modal)
-- Rename & Share & Delete a drawing using the context menu (renaming / sharing -> Modal)
+- Rename & Share & Delete a drawing using the context menu (Modal)
 - Sort drawings (by name / creation date / last opening date)
 - Search for a drawing
 - Edit a drawing
-
-## Trash
-
-- Delete & Restore a drawing using the context menu (deleting -> Modal)
-- Sort drawings (by name / creation date / deletion date)
-- Search for a drawing
-- Empty trash (Modal)
 
 ## Settings
 
