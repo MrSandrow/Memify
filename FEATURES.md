@@ -57,7 +57,6 @@
 - Use Firebase
 - Use React Router
 - Use React Query / Apollo
-- Use Formik / React Hooks Form
 - Use React Spring / Framer Motion
 - Use React Testing Library / Cypress
 - Use GraphQL (Trigger requests dynamically : when submitting a form / when applying a filter)
