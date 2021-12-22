@@ -23,6 +23,7 @@ module.exports = {
 
   rules: {
     'import/no-extraneous-dependencies': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
   },
 
@@ -35,7 +36,7 @@ module.exports = {
       'no-use-before-define': 'off',
       '@typescript-eslint/no-use-before-define': ['error'],
       'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
-      'import/extensions': ['error', { ts: 'never', tsx: 'never' }],
+      'import/extensions': ['error', { ts: 'never', tsx: 'never', ttf: 'always' }],
 
       /* Disable rules already handled by TypeScript language features */
       'no-unused-vars': 'off',

@@ -40,6 +40,9 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      shared: path.resolve('src', 'shared'),
+    },
   },
 
   plugins: [
