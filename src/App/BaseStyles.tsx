@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { color, font } from 'shared/utils/styles';
+
 const BaseStyles = createGlobalStyle`
   *, 
   *::before, 
@@ -18,11 +20,13 @@ const BaseStyles = createGlobalStyle`
   }
 
   html {
-    font-family: 'Montserrat', sans-serif;
+    font-family: ${font.primary};
   }
 
   #root {
-    background: black;
+    background: ${color.backgroundPrimary};
+    color: ${color.accentPrimary};
+    overflow-y: auto;
   }
 `;
 
