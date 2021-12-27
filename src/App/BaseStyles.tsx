@@ -26,7 +26,6 @@ const BaseStyles = createGlobalStyle`
   #root {
     background: ${color.backgroundPrimary};
     color: ${color.accentPrimary};
-    overflow-y: auto;
   }
 `;
 

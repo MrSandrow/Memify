@@ -1,0 +1,36 @@
+import styled from 'styled-components';
+
+import { color } from 'shared/utils/styles';
+
+export const Wrapper = styled.div`
+  height: 100%;
+  left: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  width: 100%;
+`;
+
+export const Overlay = styled.div`
+  align-items: center;
+  background: #000000c3;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: center;
+  min-height: 100%;
+  width: 100%;
+`;
+
+interface StyledModalProps {
+  width: string;
+}
+
+export const StyledModal = styled.div<StyledModalProps>`
+  background: ${color.backgroundSecondary};
+  border-radius: 0.5em;
+  margin: 5em 0;
+  max-width: ${(props) => props.width};
+  padding: 2em;
+  width: 85%;
+`;

@@ -19,12 +19,12 @@ const StyledButton = styled.button<StyledButtonProps>`
   grid-auto-flow: column;
   height: 3em;
   line-height: 1;
-  margin: auto;
   min-width: 3em;
   padding: 0 0.75em;
   overflow: hidden;
   transition: all 0.1s;
   user-select: none;
+  width: fit-content;
   ${(props) => buttonVariants[props.variant]}
 `;
 
