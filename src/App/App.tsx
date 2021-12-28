@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 
+import Authentication from '../Authentication/Authentication';
+
 import FontStyles from './FontStyles';
 import BaseStyles from './BaseStyles';
 import Wrapper from './Styles';
-
-import Authentication from '../Authentication/Authentication';
 
 const App: FC = () => (
   <>

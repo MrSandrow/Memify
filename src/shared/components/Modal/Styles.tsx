@@ -16,7 +16,6 @@ export const Overlay = styled.div`
   align-items: center;
   background: #000000c3;
   display: flex;
-  flex-direction: column;
   height: auto;
   justify-content: center;
   min-height: 100%;
