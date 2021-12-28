@@ -20,6 +20,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
   overflow: hidden;
   transition: all 0.1s;
   user-select: none;
+  white-space: nowrap;
   width: ${(props) => (props.iconOnly ? '3em' : '100%')};
   ${(props) => buttonVariants[props.variant]}
 `;
@@ -32,8 +33,4 @@ export const Wrapper = styled.div`
   height: 100%;
   line-height: 1;
   padding: 0 0.75em;
-`;
-
-export const Text = styled.span`
-  width: max-content;
 `;
