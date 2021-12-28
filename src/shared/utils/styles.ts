@@ -18,6 +18,10 @@ export const font = {
   logo: '\'Museo\', monospace;',
 };
 
+export const zIndexValues = {
+  modal: 1,
+};
+
 export const mixin = {
   lighten: (colorValue: string, amount: number) => (
     Color(colorValue).lighten(amount).string()

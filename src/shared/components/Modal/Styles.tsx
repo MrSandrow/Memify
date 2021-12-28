@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { color } from 'shared/utils/styles';
+import { color, zIndexValues } from 'shared/utils/styles';
 
 export const Wrapper = styled.div`
   height: 100%;
@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
+  z-index: ${zIndexValues.modal};
 `;
 
 export const Overlay = styled.div`
