@@ -7,6 +7,7 @@ import Wrapper from './Styles';
 
 interface Props {
   closingFunction: () => void;
+  isOpen: boolean;
   message: string;
   variant: 'success' | 'error';
 }
@@ -23,11 +24,13 @@ const buttonVariants = {
 
 const AlertModal:FC<Props> = ({
   closingFunction,
+  isOpen,
   message,
   variant,
 }) => (
   <Modal
     closingFunction={closingFunction}
+    isOpen={isOpen}
     renderContent={(closeModal) => (
       <Wrapper>
         <h2>{titleVariants[variant]}</h2>
