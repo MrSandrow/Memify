@@ -2,7 +2,7 @@ import React, { FC, ReactElement, ButtonHTMLAttributes } from 'react';
 
 import buttonVariants from 'shared/services/buttonVariants';
 
-import StyledButton from './Styles';
+import { StyledButton, Wrapper, Text } from './Styles';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: string;
@@ -16,9 +16,11 @@ const Button:FC<Props> = ({
   variant,
   ...buttonProps
 }) => (
-  <StyledButton variant={variant} {...buttonProps}>
-    {renderIcon && renderIcon('1.5em')}
-    {children}
+  <StyledButton iconOnly={!children} variant={variant} {...buttonProps}>
+    <Wrapper>
+      {renderIcon && renderIcon('1.5em')}
+      {children && <Text>{children}</Text>}
+    </Wrapper>
   </StyledButton>
 );
 
