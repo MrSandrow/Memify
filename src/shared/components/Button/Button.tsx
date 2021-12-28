@@ -1,24 +1,27 @@
-import React, { FC, ReactElement, ButtonHTMLAttributes } from 'react';
+import React, { FC, ButtonHTMLAttributes } from 'react';
 
 import buttonVariants from 'shared/services/buttonVariants';
+import icons from 'shared/services/icons';
+
+import Icon from 'shared/components/Icon/Icon';
 
 import { StyledButton, Wrapper } from './Styles';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: string;
-  renderIcon?: (size: string) => ReactElement;
+  icon?: keyof typeof icons;
   variant: keyof typeof buttonVariants;
 }
 
 const Button:FC<Props> = ({
   children,
-  renderIcon,
+  icon,
   variant,
   ...buttonProps
 }) => (
   <StyledButton iconOnly={!children} variant={variant} {...buttonProps}>
     <Wrapper>
-      {renderIcon && renderIcon('1.5em')}
+      {icon && <Icon size="1.5em" variant={icon} /> }
       {children}
     </Wrapper>
   </StyledButton>

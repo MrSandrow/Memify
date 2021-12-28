@@ -1,14 +1,18 @@
-import React, { FC, ReactElement, InputHTMLAttributes } from 'react';
+import React, { FC, InputHTMLAttributes } from 'react';
+
+import icons from 'shared/services/icons';
+
+import Icon from 'shared/components/Icon/Icon';
 
 import { Wrapper, StyledInput } from './Styles';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  renderIcon?: (size: string) => ReactElement;
+  icon?: keyof typeof icons;
 }
 
-const Input:FC<Props> = ({ renderIcon, ...inputProps }) => (
+const Input:FC<Props> = ({ icon, ...inputProps }) => (
   <Wrapper>
-    {renderIcon && renderIcon('1.25em')}
+    {icon && <Icon size="1.25em" variant={icon} /> }
     <StyledInput {...inputProps} />
   </Wrapper>
 );
