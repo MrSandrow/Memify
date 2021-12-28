@@ -34,7 +34,7 @@ const SignIn:FC = () => {
           type="password"
           value={password}
         />
-        <Button variant="primary">Sign In</Button>
+        <Button variant="primary">Sign in</Button>
       </Form>
 
       <Links>

@@ -6,9 +6,8 @@ import Logo from 'shared/components/Logo/Logo';
 
 import { Wrapper, Form } from './Styles';
 
-const SignUp:FC = () => {
+const ResetPassword:FC = () => {
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
 
   return (
     <Wrapper>
@@ -22,19 +21,12 @@ const SignUp:FC = () => {
           type="email"
           value={email}
         />
-        <Input
-          onChange={(event) => setPassword(event.target.value)}
-          placeholder="Password"
-          required
-          type="password"
-          value={password}
-        />
-        <Button variant="primary">Sign up</Button>
+        <Button variant="primary">Reset password</Button>
       </Form>
 
-      <span>Sign in</span>
+      <span>Cancel</span>
     </Wrapper>
   );
 };
 
-export default SignUp;
+export default ResetPassword;
