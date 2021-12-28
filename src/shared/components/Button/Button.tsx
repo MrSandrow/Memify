@@ -19,7 +19,7 @@ const Button:FC<Props> = ({
   variant,
   ...buttonProps
 }) => (
-  <StyledButton iconOnly={!children} variant={variant} {...buttonProps}>
+  <StyledButton {...buttonProps} iconOnly={!children} variant={variant}>
     <Wrapper>
       {icon && <Icon size="1.5em" variant={icon} /> }
       {children}
