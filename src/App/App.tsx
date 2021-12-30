@@ -1,18 +1,17 @@
 import React, { FC } from 'react';
 
-import Authentication from '../Authentication/Authentication';
-
 import FontStyles from './FontStyles';
 import BaseStyles from './BaseStyles';
-import Wrapper from './Styles';
+import ScrollWrapper from './Styles';
+import Routes from './Routes';
 
 const App: FC = () => (
   <>
     <FontStyles />
     <BaseStyles />
-    <Wrapper>
-      <Authentication />
-    </Wrapper>
+    <ScrollWrapper>
+      <Routes />
+    </ScrollWrapper>
   </>
 );
 

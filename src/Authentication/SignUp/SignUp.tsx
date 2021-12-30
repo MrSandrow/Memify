@@ -4,7 +4,7 @@ import Button from 'shared/components/Button/Button';
 import Input from 'shared/components/Input/Input';
 import Logo from 'shared/components/Logo/Logo';
 
-import { Wrapper, Form } from './Styles';
+import { Wrapper, Form, StyledLink } from './Styles';
 
 const SignUp:FC = () => {
   const [email, setEmail] = useState('');
@@ -29,10 +29,10 @@ const SignUp:FC = () => {
           type="password"
           value={password}
         />
-        <Button variant="primary">Sign up</Button>
+        <Button type="submit" variant="primary">Sign up</Button>
       </Form>
 
-      <span>Sign in</span>
+      <StyledLink to="../signin">Sign in</StyledLink>
     </Wrapper>
   );
 };

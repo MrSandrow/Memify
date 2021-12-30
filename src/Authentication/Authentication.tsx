@@ -1,12 +1,11 @@
 import React, { FC } from 'react';
-
-import SignIn from './SignIn/SignIn';
+import { Outlet } from 'react-router-dom';
 
 import Wrapper from './Styles';
 
 const Authentication:FC = () => (
   <Wrapper>
-    <SignIn />
+    <Outlet />
   </Wrapper>
 );
 

@@ -8,6 +8,7 @@ import {
   Wrapper,
   Form,
   Links,
+  StyledLink,
   Divider,
 } from './Styles';
 
@@ -34,13 +35,13 @@ const SignIn:FC = () => {
           type="password"
           value={password}
         />
-        <Button variant="primary">Sign in</Button>
+        <Button type="submit" variant="primary">Sign in</Button>
       </Form>
 
       <Links>
-        <span>Sign up</span>
+        <StyledLink to="../signup">Sign up</StyledLink>
         <Divider />
-        <span>Reset password</span>
+        <StyledLink to="../resetpassword">Reset password</StyledLink>
       </Links>
     </Wrapper>
   );

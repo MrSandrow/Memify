@@ -4,7 +4,7 @@ import Button from 'shared/components/Button/Button';
 import Input from 'shared/components/Input/Input';
 import Logo from 'shared/components/Logo/Logo';
 
-import { Wrapper, Form } from './Styles';
+import { Wrapper, Form, StyledLink } from './Styles';
 
 const ResetPassword:FC = () => {
   const [email, setEmail] = useState('');
@@ -21,10 +21,10 @@ const ResetPassword:FC = () => {
           type="email"
           value={email}
         />
-        <Button variant="primary">Reset password</Button>
+        <Button type="submit" variant="primary">Reset password</Button>
       </Form>
 
-      <span>Cancel</span>
+      <StyledLink to="../signin">Go back</StyledLink>
     </Wrapper>
   );
 };

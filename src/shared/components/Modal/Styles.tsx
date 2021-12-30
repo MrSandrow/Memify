@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { color, zIndexValues } from 'shared/utils/styles';
 
-export const Wrapper = styled.div`
+export const ScrollWrapper = styled.div`
   height: 100%;
   left: 0;
   overflow-y: auto;

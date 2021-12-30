@@ -35,7 +35,12 @@ const AlertModal:FC<Props> = ({
       <Wrapper>
         <h2>{titleVariants[variant]}</h2>
         <span>{message}</span>
-        <Button onClick={closeModal} variant={buttonVariants[variant]}>Close</Button>
+        <Button
+          onClick={closeModal}
+          variant={buttonVariants[variant]}
+        >
+          Close
+        </Button>
       </Wrapper>
     )}
     width="20em"

@@ -19,6 +19,12 @@ const BaseStyles = createGlobalStyle`
     min-height: 100%;
   }
 
+  a {
+    color: inherit;
+    text-decoration: none;
+    width: fit-content;
+  }
+
   html {
     font-family: ${font.primary};
   }

@@ -15,6 +15,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve('public'),
+    publicPath: '/',
   },
 
   module: {
@@ -59,5 +60,6 @@ module.exports = {
     open: true,
     hot: isDevelopment,
     clientLogLevel: 'none',
+    historyApiFallback: true,
   },
 };
