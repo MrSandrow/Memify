@@ -1,7 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import { createPortal } from 'react-dom';
 
-import { ScrollWrapper, Overlay, StyledModal } from './Styles';
+import { StyledScrollWrapper, Overlay, StyledModal } from './Styles';
 
 interface Props {
   closingFunction: () => void;
@@ -18,13 +18,13 @@ const Modal:FC<Props> = ({
   if (!root) return null;
 
   return createPortal(
-    <ScrollWrapper>
+    <StyledScrollWrapper>
       <Overlay>
         <StyledModal width={width}>
           {renderContent(closingFunction)}
         </StyledModal>
       </Overlay>
-    </ScrollWrapper>,
+    </StyledScrollWrapper>,
     root,
   );
 };

@@ -6,13 +6,7 @@ import Input from 'shared/components/Input/Input';
 import Logo from 'shared/components/Logo/Logo';
 import AlertModal from 'shared/components/AlertModal/AlertModal';
 
-import {
-  Wrapper,
-  Form,
-  Links,
-  StyledLink,
-  Divider,
-} from './Styles';
+import { Wrapper, Form, StyledLink } from './Styles';
 
 const SignIn:FC = () => {
   const { signIn } = useAuth();
@@ -52,11 +46,7 @@ const SignIn:FC = () => {
           <Button type="submit" variant="primary">Sign in</Button>
         </Form>
 
-        <Links>
-          <StyledLink to="../signup">Sign up</StyledLink>
-          <Divider />
-          <StyledLink to="../resetpassword">Reset password</StyledLink>
-        </Links>
+        <StyledLink to="../signup">Sign up</StyledLink>
       </Wrapper>
 
       {displayErrorModal && (
