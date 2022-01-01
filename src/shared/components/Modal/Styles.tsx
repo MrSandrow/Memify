@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
 import { color, zIndexValues } from 'shared/utils/styles';
-import ScrollWrapper from 'shared/components/ScrollWrapper/ScrollWrapper';
 
-export const StyledScrollWrapper = styled(ScrollWrapper)`
+export const ScrollWrapper = styled.div`
+  height: 100%;
+  left: 0;
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  width: 100%;
   z-index: ${zIndexValues.modal};
 `;
 

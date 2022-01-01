@@ -9,6 +9,8 @@ import SignUp from '../Authentication/SignUp/SignUp';
 
 import Dashboard from '../Dashboard/Dashboard';
 
+import Editor from '../Editor/Editor';
+
 const Routes:FC = () => {
   const { getUser } = useAuth();
 
@@ -19,6 +21,8 @@ const Routes:FC = () => {
           <Route path="*" element={<Navigate replace to="dashboard" />} />
 
           <Route path="dashboard" element={<Dashboard />} />
+
+          <Route path="editor" element={<Editor />} />
         </RoutesWrapper>
       ) : (
         <RoutesWrapper>

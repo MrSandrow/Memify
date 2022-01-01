@@ -47,7 +47,7 @@ const SignUp:FC = () => {
           <Button type="submit" variant="primary">Sign up</Button>
         </Form>
 
-        <StyledLink to="../signin">Sign in</StyledLink>
+        <StyledLink to="/signin">Sign in</StyledLink>
       </Wrapper>
 
       {displayErrorModal && (
