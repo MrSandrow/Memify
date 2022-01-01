@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: grid;
-  gap: 1.5em;
-  justify-items: center;
-  text-align: center;
+  grid-template-rows: auto 1fr;
+  height: auto;
+  min-height: 100%;
+  width: 100%;
 `;
 
 export default Wrapper;
