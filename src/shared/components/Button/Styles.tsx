@@ -21,7 +21,6 @@ export const StyledButton = styled.button<StyledButtonProps>`
   font-family: inherit;
   font-size: 1em;
   height: 3em;
-  max-width: 25em;
   min-width: 3em;
   overflow: hidden;
   transition: all 0.1s;

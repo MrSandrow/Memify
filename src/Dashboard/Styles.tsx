@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   height: auto;
@@ -8,4 +8,11 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
-export default Wrapper;
+export const OutletWrapper = styled.div`
+  height: auto;
+  margin: auto;
+  max-width: 40em;
+  min-height: 100%;
+  padding: 1.5em 0 2.5em;
+  width: 85%;
+`;

@@ -8,6 +8,7 @@ import SignIn from '../Authentication/SignIn/SignIn';
 import SignUp from '../Authentication/SignUp/SignUp';
 
 import Dashboard from '../Dashboard/Dashboard';
+import Drawings from '../Dashboard/Drawings/Drawings';
 
 import Editor from '../Editor/Editor';
 
@@ -18,9 +19,11 @@ const Routes:FC = () => {
     <>
       {getUser() ? (
         <RoutesWrapper>
-          <Route path="*" element={<Navigate replace to="dashboard" />} />
+          <Route path="*" element={<Navigate replace to="drawings" />} />
 
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route element={<Dashboard />}>
+            <Route path="drawings" element={<Drawings />} />
+          </Route>
 
           <Route path="editor" element={<Editor />} />
         </RoutesWrapper>

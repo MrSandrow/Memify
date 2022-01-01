@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   height: auto;
   justify-content: center;
   margin: auto;
-  max-width: 25em;
+  max-width: 27.5em;
   min-height: 100%;
   padding: 4em 0;
   width: 85%;

@@ -21,8 +21,8 @@ const BaseStyles = createGlobalStyle`
 
   a {
     color: inherit;
+    display: flex;
     text-decoration: none;
-    width: fit-content;
   }
 
   html {

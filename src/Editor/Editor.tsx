@@ -10,7 +10,7 @@ const Editor:FC = () => (
   <Wrapper>
     <Navbar
       renderLeftButton={() => (
-        <Link to="/dashboard">
+        <Link to="/drawings">
           <Button
             icon="arrowLeftCircle"
             variant="empty"
