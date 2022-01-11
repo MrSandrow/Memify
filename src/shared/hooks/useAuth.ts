@@ -16,12 +16,14 @@ type SignOut = () => Promise<void>;
 type SignUp = (email: string, password: string) => Promise<UserCredential>;
 
 const useAuth = () => {
-  const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+  const storageKey = 'user';
+  const storedUser = JSON.parse(localStorage.getItem(storageKey) || 'null');
+
   const [user, setUser] = useState<User | null>(storedUser);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (authedUser) => {
-      localStorage.setItem('user', JSON.stringify(authedUser));
+      localStorage.setItem(storageKey, JSON.stringify(authedUser));
       setUser(authedUser);
     });
 
