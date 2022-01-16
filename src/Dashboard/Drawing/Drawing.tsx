@@ -20,8 +20,8 @@ const Drawing:FC = () => (
     </StyledLink>
 
     <Button
+      disabled
       icon="moreHorizontal"
-      isNotImplemented
       variant="empty"
     />
   </Wrapper>

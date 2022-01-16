@@ -19,8 +19,8 @@ const Editor:FC = () => (
       )}
       renderRightButton={() => (
         <Button
+          disabled
           icon="save"
-          isNotImplemented
           variant="empty"
         />
       )}

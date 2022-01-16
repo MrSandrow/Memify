@@ -15,8 +15,8 @@ const Dashboard:FC = () => {
       <Navbar
         renderLeftButton={() => (
           <Button
+            disabled
             icon="menu"
-            isNotImplemented
             variant="empty"
           />
         )}

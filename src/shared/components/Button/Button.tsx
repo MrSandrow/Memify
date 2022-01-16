@@ -10,21 +10,18 @@ import { StyledButton, Wrapper } from './Styles';
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: string;
   icon?: keyof typeof icons;
-  isNotImplemented?: boolean;
   variant: keyof typeof buttonVariants;
 }
 
 const Button:FC<Props> = ({
   children,
   icon,
-  isNotImplemented,
   variant,
   ...buttonProps
 }) => (
   <StyledButton
     {...buttonProps}
     iconOnly={!children}
-    isNotImplemented={isNotImplemented}
     variant={variant}
   >
     <Wrapper>

@@ -1,15 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import buttonVariants from 'shared/services/buttonVariants';
 
-const notImplementedStyles = css`
-  cursor: not-allowed;
-  opacity: 0.5;
-`;
-
 interface StyledButtonProps {
   iconOnly: boolean;
-  isNotImplemented?: boolean;
   variant: keyof typeof buttonVariants;
 }
 
@@ -28,7 +22,11 @@ export const StyledButton = styled.button<StyledButtonProps>`
   white-space: nowrap;
   width: ${(props) => (props.iconOnly ? '3em' : '100%')};
   ${(props) => buttonVariants[props.variant]}
-  ${(props) => (props.isNotImplemented && notImplementedStyles)}
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
 `;
 
 export const Wrapper = styled.div`
