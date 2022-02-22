@@ -34,7 +34,7 @@ module.exports = {
       /* Modify existing rules to allow them to work with TypeScript */
       'dot-notation': 'off',
       'no-use-before-define': 'off',
-      '@typescript-eslint/no-use-before-define': ['error'],
+      '@typescript-eslint/no-use-before-define': ['error', { functions: false, classes: true, variables: true }],
       'react/jsx-filename-extension': ['error', { extensions: ['.tsx'] }],
       'import/extensions': ['error', { ts: 'never', tsx: 'never', ttf: 'always' }],
 
