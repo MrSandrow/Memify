@@ -6,7 +6,17 @@ import { color } from 'shared/utils/styles';
 export const Wrapper = styled.div`
   display: grid;
   gap: 1.5em;
+  grid-template-rows: auto 1fr;
   width: 100%;
+`;
+
+export const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Message = styled.span`
+  margin: auto;
 `;
 
 export const Drawing = styled.div`
@@ -36,7 +46,7 @@ export const Details = styled.div`
   grid-auto-flow: column;
   grid-template-columns: auto 1fr;
   height: 100%;
-  padding: 0 0.5em 0 1.25em;
+  padding: 0 0.5em 0 0.75em;
   width: 100%;
 `;
 

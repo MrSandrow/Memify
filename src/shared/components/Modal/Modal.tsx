@@ -4,8 +4,8 @@ import { createPortal } from 'react-dom';
 import { ScrollWrapper, Overlay, StyledModal } from './Styles';
 
 interface Props {
-  closingFunction: () => void;
-  renderContent: (closingFunction: () => void) => ReactElement;
+  closingFunction?: () => void;
+  renderContent: (closingFunction?: () => void) => ReactElement;
   width: string;
 }
 

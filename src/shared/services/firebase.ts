@@ -1,16 +1,19 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBU1ltIfcUSFxNCEPFk64sJP0OHjyK1tl8',
-  authDomain: 'memify-a9dec.firebaseapp.com',
-  projectId: 'memify-a9dec',
-  storageBucket: 'memify-a9dec.appspot.com',
-  messagingSenderId: '254432886207',
-  appId: '1:254432886207:web:69a8c4a7213f16f25df50a',
+  apiKey: 'AIzaSyC7BygxspYMaHDLql2lPBhw0whMmrPm-60',
+  authDomain: 'memify-dev.firebaseapp.com',
+  projectId: 'memify-dev',
+  storageBucket: 'memify-dev.appspot.com',
+  messagingSenderId: '634462634043',
+  appId: '1:634462634043:web:1692fb172ef25739d45c1e',
 };
 
 initializeApp(firebaseConfig);
 
-// eslint-disable-next-line import/prefer-default-export
 export const auth = getAuth();
+export const db = getFirestore();
+export const storage = getStorage();

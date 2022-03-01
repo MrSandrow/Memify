@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const OutletWrapper = styled.div`
+  display: grid;
   height: auto;
   margin: auto;
   max-width: 40em;

@@ -1,27 +1,20 @@
 import React, { FC, useState, FormEvent } from 'react';
 
-import useAuth from 'shared/hooks/useAuth';
 import Button from 'shared/components/Button/Button';
 import Input from 'shared/components/Input/Input';
 import Logo from 'shared/components/Logo/Logo';
 import AlertModal from 'shared/components/AlertModal/AlertModal';
 
+import useSignUp from './useSignUp';
+
 import { Wrapper, Form, StyledLink } from './Styles';
 
 const SignUp:FC = () => {
-  const { signUp } = useAuth();
+  const { signUp } = useSignUp();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [displayErrorModal, setDisplayErrorModal] = useState(false);
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    signUp(email, password).catch(() => {
-      setDisplayErrorModal(true);
-    });
-  };
 
   return (
     <>
@@ -59,6 +52,14 @@ const SignUp:FC = () => {
       )}
     </>
   );
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    signUp(email, password).catch(() => {
+      setDisplayErrorModal(true);
+    });
+  }
 };
 
 export default SignUp;

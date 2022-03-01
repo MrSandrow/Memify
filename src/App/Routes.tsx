@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { Routes as RoutesWrapper, Route, Navigate } from 'react-router-dom';
 
-import useAuth from 'shared/hooks/useAuth';
+import useCurrentUser from 'shared/hooks/useCurrentUser';
 
 import Authentication from '../Authentication/Authentication';
 import SignIn from '../Authentication/SignIn/SignIn';
@@ -13,11 +13,11 @@ import Drawings from '../Dashboard/Drawings/Drawings';
 import Editor from '../Editor/Editor';
 
 const Routes:FC = () => {
-  const { getUser } = useAuth();
+  const { currentUser } = useCurrentUser();
 
   return (
     <>
-      {getUser() ? (
+      {currentUser ? (
         <RoutesWrapper>
           <Route path="*" element={<Navigate replace to="drawings" />} />
 
@@ -25,7 +25,7 @@ const Routes:FC = () => {
             <Route path="drawings" element={<Drawings />} />
           </Route>
 
-          <Route path="editor" element={<Editor />} />
+          <Route path="editor/:id" element={<Editor />} />
         </RoutesWrapper>
       ) : (
         <RoutesWrapper>
