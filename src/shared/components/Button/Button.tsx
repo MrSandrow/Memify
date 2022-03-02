@@ -1,7 +1,7 @@
 import React, { FC, ButtonHTMLAttributes } from 'react';
 
-import buttonVariants from 'shared/services/buttonVariants';
-import icons from 'shared/services/icons';
+import buttonVariants from 'shared/utils/buttonVariants';
+import icons from 'shared/utils/icons';
 
 import Icon from 'shared/components/Icon/Icon';
 

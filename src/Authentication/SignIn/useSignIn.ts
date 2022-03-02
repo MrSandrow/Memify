@@ -1,6 +1,6 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 
-import { auth } from 'shared/services/firebase';
+import { auth } from 'shared/utils/firebase';
 
 const useSignIn = () => {
   const signIn = (email: string, password: string) => (

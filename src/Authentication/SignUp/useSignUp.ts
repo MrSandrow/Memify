@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-import { auth } from 'shared/services/firebase';
+import { auth } from 'shared/utils/firebase';
 
 const useSignUp = () => {
   const signUp = (email: string, password: string) => (

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { ref, getBlob } from 'firebase/storage';
 
-import { db, storage } from 'shared/services/firebase';
+import { db, storage } from 'shared/utils/firebase';
 
 const useDrawing = (drawingId: string | undefined) => {
   const drawingDocumentRef = doc(db, `drawings/${drawingId}`);

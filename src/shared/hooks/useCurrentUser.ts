@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 
-import { auth } from 'shared/services/firebase';
+import { auth } from 'shared/utils/firebase';
 
 const storageKey = 'user';
 const storedUser = JSON.parse(localStorage.getItem(storageKey) || 'null');
