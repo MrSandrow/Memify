@@ -1,4 +1,5 @@
 const path = require('path');
+const Dotenv = require('dotenv-webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
@@ -15,6 +16,7 @@ module.exports = {
   output: {
     filename: '[name].[contenthash].js',
     path: path.resolve('public'),
+    publicPath: '/',
   },
 
   module: {
@@ -40,9 +42,13 @@ module.exports = {
 
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    alias: {
+      shared: path.resolve('src', 'shared'),
+    },
   },
 
   plugins: [
+    new Dotenv({ systemvars: true }),
     new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -51,10 +57,11 @@ module.exports = {
   ],
 
   devServer: {
-    host: '127.0.0.1',
-    port: 5500,
+    host: 'localhost',
+    port: 3000,
     open: true,
     hot: isDevelopment,
     clientLogLevel: 'none',
+    historyApiFallback: true,
   },
 };

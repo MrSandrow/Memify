@@ -1,8 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { color, font } from 'shared/utils/styles';
+
 const BaseStyles = createGlobalStyle`
-  *,
-  *::before,
+  *, 
+  *::before, 
   *::after {
     box-sizing: border-box;
     margin: 0;
@@ -10,23 +12,26 @@ const BaseStyles = createGlobalStyle`
     padding: 0;
   }
   
+  html, 
+  body, 
+  #root {
+    height: 100%;
+    min-height: 100%;
+  }
+
+  a {
+    color: inherit;
+    display: inline-flex;
+    text-decoration: none;
+  }
+
   html {
-    font-family: 'Montserrat', sans-serif;
-    height: 100%;
-  }
-
-  body {
-    height: 100%;
-  }
-
-  button {
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
+    font-family: ${font.primary};
   }
 
   #root {
-    height: 100%;
+    background: ${color.backgroundPrimary};
+    color: ${color.accentPrimary};
   }
 `;
 

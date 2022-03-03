@@ -1,62 +1,136 @@
-import React, { FC, useState } from 'react';
-import styled from 'styled-components';
+import React, { FC, useState, PointerEvent } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
-import BaseStyles from './BaseStyles';
-import NavigationContainer from './NavigationContainer/NavigationContainer';
-import DrawingContainer from './DrawingContainer/DrawingContainer';
-import ToolbarContainer from './ToolbarContainer/ToolbarContainer';
+import Navbar from 'shared/components/Navbar/Navbar';
+import Button from 'shared/components/Button/Button';
+import Modal from 'shared/components/Modal/Modal';
+import AlertModal from 'shared/components/AlertModal/AlertModal';
 
-const navigationContainerHeight = '4rem';
-const toolbarContainerHeight = '4rem';
-const drawingContainerHeight = `calc(100% - ${navigationContainerHeight} - ${toolbarContainerHeight})`;
+import useResize from './useResize';
+import useDrawing from './useDrawing';
+import useBackground from './useBackground';
+import useCanvas from './useCanvas';
+import useSaveDrawing from './useSaveDrawing';
 
-const Container = styled.div`
-  display: grid;
-  grid-template-rows: ${navigationContainerHeight} ${drawingContainerHeight} ${toolbarContainerHeight};
-  height: 100%;
-  width: 100%;
-`;
+import {
+  Wrapper,
+  Content,
+  LargeMessage,
+  Message,
+  CanvasWrapper,
+  Canvas,
+} from './Styles';
 
 const Editor:FC = () => {
-  const [shouldUndo, setShouldUndo] = useState(false);
-  const [shouldRedo, setShouldRedo] = useState(false);
-  const [shouldDisplayPenMenu, setShouldDisplayPenMenu] = useState(false);
-  const [shouldResetCanvas, setShouldResetCanvas] = useState(false);
-  const [shouldDownloadCanvas, setShouldDownloadCanvas] = useState(false);
+  const [wrapperRef, setWrapperRef] = useState<HTMLDivElement | null>(null);
+  const [canvasRef, setCanvasRef] = useState<HTMLCanvasElement | null>(null);
+  const [contextRef, setContextRef] = useState<CanvasRenderingContext2D | null>(null);
+
+  const { initialCanvasSize, currentCanvasSize: cssCanvasSize } = useResize(wrapperRef);
+  const { id: drawingId } = useParams();
+  const { drawing, isLoading, isError } = useDrawing(drawingId);
+  const { backgroundSize } = useBackground(canvasRef, contextRef, drawing);
+  const realCanvasSize = backgroundSize || initialCanvasSize || undefined;
+  const { startDrawing, draw, stopDrawing } = useCanvas(contextRef, realCanvasSize, cssCanvasSize);
+  const { saveDrawing } = useSaveDrawing();
+
+  const [isDirty, setIsDirty] = useState(false);
+  const [displaySavingModal, setDisplaySavingModal] = useState(false);
+  const [displayErrorModal, setDisplayErrorModal] = useState(false);
 
   return (
-    <Container>
-      <BaseStyles />
-      <NavigationContainer />
-      <DrawingContainer
-        /* Handles undo/redo in the canvas */
-        shouldUndo={shouldUndo}
-        setShouldUndo={setShouldUndo}
-        shouldRedo={shouldRedo}
-        setShouldRedo={setShouldRedo}
-        /* Displays the pen menu */
-        shouldDisplayPenMenu={shouldDisplayPenMenu}
-        /* Resets the canvas */
-        shouldResetCanvas={shouldResetCanvas}
-        setShouldResetCanvas={setShouldResetCanvas}
-        /* Downloads the canvas */
-        shouldDownloadCanvas={shouldDownloadCanvas}
-        setShouldDownloadCanvas={setShouldDownloadCanvas}
+    <>
+      <Wrapper>
+        <Navbar
+          renderLeftButton={() => (
+            <Link to="/drawings">
+              <Button
+                icon="arrowLeftCircle"
+                variant="empty"
+              />
+            </Link>
+          )}
+          renderRightButton={() => (
+            <Button
+              disabled={!isDirty}
+              icon="save"
+              onClick={handleSave}
+              variant="empty"
+            />
+          )}
+        />
+
+        <Content>{displayCanvas()}</Content>
+      </Wrapper>
+
+      {displaySavingModal && (
+        <Modal
+          renderContent={() => <LargeMessage>Saving...</LargeMessage>}
+          width="fit-content"
+        />
+      )}
+
+      {displayErrorModal && (
+      <AlertModal
+        closingFunction={() => setDisplayErrorModal(false)}
+        message="We could not save your drawing."
+        variant="error"
       />
-      <ToolbarContainer
-        /* Handles undo/redo in the canvas */
-        setShouldUndo={setShouldUndo}
-        setShouldRedo={setShouldRedo}
-        /* Displays the pen menu */
-        shouldDisplayPenMenu={shouldDisplayPenMenu}
-        setShouldDisplayPenMenu={setShouldDisplayPenMenu}
-        /* Resets the canvas */
-        setShouldResetCanvas={setShouldResetCanvas}
-        /* Downloads the canvas */
-        setShouldDownloadCanvas={setShouldDownloadCanvas}
-      />
-    </Container>
+      )}
+    </>
   );
+
+  function handleSave() {
+    if (!canvasRef) return;
+
+    canvasRef.toBlob((blob) => {
+      if (!blob) return;
+
+      setDisplaySavingModal(true);
+
+      saveDrawing(drawingId, blob)
+        .then(() => setIsDirty(false))
+        .catch(() => setDisplayErrorModal(true))
+        .finally(() => setDisplaySavingModal(false));
+    });
+  }
+
+  function displayCanvas() {
+    if (isLoading) {
+      return <Message>Loading...</Message>;
+    }
+
+    if (isError) {
+      return <Message>Error, we could not display your drawing.</Message>;
+    }
+
+    return (
+      <CanvasWrapper ref={setWrapperRef}>
+        <Canvas
+          ref={handleRef}
+          height={realCanvasSize}
+          width={realCanvasSize}
+          cssHeight={cssCanvasSize}
+          cssWidth={cssCanvasSize}
+          /* Event Handlers */
+          onPointerDown={handlePointerDown}
+          onPointerMove={draw}
+          onPointerUp={stopDrawing}
+          onPointerOut={stopDrawing}
+        />
+      </CanvasWrapper>
+    );
+  }
+
+  function handleRef(canvas: HTMLCanvasElement | null) {
+    setCanvasRef(canvas);
+    setContextRef(canvas?.getContext('2d') || null);
+  }
+
+  function handlePointerDown(event: PointerEvent) {
+    startDrawing(event);
+    setIsDirty(true);
+  }
 };
 
 export default Editor;

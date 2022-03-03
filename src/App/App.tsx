@@ -2,13 +2,16 @@ import React, { FC } from 'react';
 
 import FontStyles from './FontStyles';
 import BaseStyles from './BaseStyles';
-import Editor from '../Editor/Editor';
+import ScrollWrapper from './Styles';
+import Routes from './Routes';
 
 const App: FC = () => (
   <>
     <FontStyles />
     <BaseStyles />
-    <Editor />
+    <ScrollWrapper>
+      <Routes />
+    </ScrollWrapper>
   </>
 );
 
