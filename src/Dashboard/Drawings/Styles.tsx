@@ -35,7 +35,7 @@ export const Drawing = styled.div`
 `;
 
 export const StyledLink = styled(Link)`
-  height: auto;
+  height: 100%;
   width: 100%;
 `;
 
