@@ -1,15 +1,14 @@
-import React, { FC, ButtonHTMLAttributes } from 'react';
-
-import buttonVariants from 'shared/utils/buttonVariants';
-import icons from 'shared/utils/icons';
+import React, { FC, ButtonHTMLAttributes, ComponentProps } from 'react';
 
 import Icon from 'shared/components/Icon/Icon';
+
+import buttonVariants from './buttonVariants';
 
 import { StyledButton, Wrapper } from './Styles';
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   children?: string;
-  icon?: keyof typeof icons;
+  icon?: ComponentProps<typeof Icon>['variant'];
   variant: keyof typeof buttonVariants;
 }
 

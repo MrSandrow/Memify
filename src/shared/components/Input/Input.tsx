@@ -1,13 +1,16 @@
-import React, { FC, InputHTMLAttributes, ChangeEventHandler } from 'react';
-
-import icons from 'shared/utils/icons';
+import React, {
+  FC,
+  InputHTMLAttributes,
+  ChangeEventHandler,
+  ComponentProps,
+} from 'react';
 
 import Icon from 'shared/components/Icon/Icon';
 
 import { Wrapper, StyledInput } from './Styles';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
-  icon?: keyof typeof icons;
+  icon?: ComponentProps<typeof Icon>['variant'];
   onChange: ChangeEventHandler<HTMLInputElement>;
   value: string;
 }

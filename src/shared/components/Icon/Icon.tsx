@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import icons from 'shared/utils/icons';
+import icons from './icons';
 
 import Wrapper from './Styles';
 

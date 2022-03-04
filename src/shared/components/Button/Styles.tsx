@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import buttonVariants from 'shared/utils/buttonVariants';
+import buttonVariants from './buttonVariants';
 
 interface StyledButtonProps {
   iconOnly: boolean;
