@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-  apiKey: process.env['FIREBASE_API_KEY'],
-  authDomain: process.env['FIREBASE_AUTH_DOMAIN'],
-  projectId: process.env['FIREBASE_PROJECT_ID'],
-  storageBucket: process.env['FIREBASE_STORAGE_BUCKET'],
-  messagingSenderId: process.env['FIREBASE_MESSAGING_SENDER_ID'],
-  appId: process.env['FIREBASE_APP_ID'],
+  apiKey: 'AIzaSyC9TT03CKV-yj4P8fEUW_J51IaMA29wF0Q',
+  authDomain: 'memify-prod.firebaseapp.com',
+  projectId: 'memify-prod',
+  storageBucket: 'memify-prod.appspot.com',
+  messagingSenderId: '39176808638',
+  appId: '1:39176808638:web:c22a74e2fdaaadcf3b16ef',
 };
 
 initializeApp(firebaseConfig);
