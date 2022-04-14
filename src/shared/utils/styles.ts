@@ -19,7 +19,8 @@ export const font = {
 };
 
 export const zIndexValues = {
-  modal: 1,
+  tooltip: 1,
+  modal: 2,
 };
 
 export const mixin = {

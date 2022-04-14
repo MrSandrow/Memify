@@ -2,25 +2,17 @@ import React, { FC, useState } from 'react';
 
 import AlertModal from 'shared/components/AlertModal/AlertModal';
 import Button from 'shared/components/Button/Button';
-import Icon from 'shared/components/Icon/Icon';
 
 import useCreateDrawing from './useCreateDrawing';
 import useDrawings from './useDrawings';
 
-import {
-  Wrapper,
-  Content,
-  Message,
-  Drawing,
-  StyledLink,
-  Details,
-  Title,
-} from './Styles';
+import DrawingCard from './DrawingCard/DrawingCard';
+import { Wrapper, Content, Message } from './Styles';
 
 const Drawings:FC = () => {
   const { createDrawing } = useCreateDrawing();
-
   const { drawings, isLoading, isError } = useDrawings();
+
   const [displayErrorModal, setDisplayErrorModal] = useState(false);
 
   return (
@@ -62,22 +54,7 @@ const Drawings:FC = () => {
 
     if (drawings) {
       return drawings.map((drawing) => (
-        <Drawing key={drawing['id']}>
-
-          <StyledLink to={`/editor/${drawing['id']}`}>
-            <Details>
-              <Icon variant="file" size="1em" />
-              <Title>{drawing['name']}</Title>
-            </Details>
-          </StyledLink>
-
-          <Button
-            disabled
-            icon="moreHorizontal"
-            variant="empty"
-          />
-
-        </Drawing>
+        <DrawingCard drawing={drawing} key={drawing['id']} />
       ));
     }
 
