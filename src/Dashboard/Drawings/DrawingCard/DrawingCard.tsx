@@ -35,7 +35,7 @@ const DrawingCard:FC<Props> = ({ drawing }) => {
 
         <Button
           icon="moreHorizontal"
-          onClick={() => setDisplayTooltip((prevState) => !prevState)}
+          onClick={() => setDisplayTooltip(true)}
           variant="empty"
         />
 

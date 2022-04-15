@@ -64,7 +64,7 @@ const DeleteDrawing:FC<Props> = ({ drawing }) => {
 
     setIsDeleting(true);
 
-    /* This is creating a memory leak. I might fix it sometime. */
+    /* This is creating a memory leak. I might fix it someday. */
     deleteDrawing(drawing['id'])
       .then(() => setDisplayConfirmationModal(false))
       .catch(() => setDisplayErrorModal(true))
