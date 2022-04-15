@@ -2,11 +2,8 @@ import styled from 'styled-components';
 
 import { color, zIndexValues } from 'shared/utils/styles';
 
-const Wrapper = styled.div`
-  background: ${color.backgroundSecondary};
-  border-radius: 0.5em;
+export const Wrapper = styled.div`
   max-width: 100%;
-  padding: 1em;
   position: absolute;
   right: 0;
   z-index: ${zIndexValues.tooltip};
@@ -23,4 +20,10 @@ const Wrapper = styled.div`
   }
 `;
 
-export default Wrapper;
+export const StyledTooltip = styled.div`
+  background: ${color.backgroundSecondary};
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+`;

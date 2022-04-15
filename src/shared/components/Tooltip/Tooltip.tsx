@@ -1,10 +1,12 @@
 import React, { FC } from 'react';
 
-import Wrapper from './Styles';
+import { Wrapper, StyledTooltip } from './Styles';
 
 const Tooltip:FC = ({ children }) => (
   <Wrapper>
-    {children}
+    <StyledTooltip>
+      {children}
+    </StyledTooltip>
   </Wrapper>
 );
 

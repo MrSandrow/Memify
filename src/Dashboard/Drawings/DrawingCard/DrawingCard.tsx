@@ -5,6 +5,8 @@ import Button from 'shared/components/Button/Button';
 import Icon from 'shared/components/Icon/Icon';
 import Tooltip from 'shared/components/Tooltip/Tooltip';
 
+import DeleteDrawing from './DeleteDrawing/DeleteDrawing';
+import RenameDrawing from './RenameDrawing/RenameDrawing';
 import {
   Wrapper,
   Card,
@@ -39,7 +41,12 @@ const DrawingCard:FC<Props> = ({ drawing }) => {
 
       </Card>
 
-      {displayTooltip && <Tooltip />}
+      {displayTooltip && (
+      <Tooltip>
+        <RenameDrawing drawing={drawing} />
+        <DeleteDrawing drawing={drawing} />
+      </Tooltip>
+      )}
     </Wrapper>
   );
 };
