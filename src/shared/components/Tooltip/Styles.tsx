@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { color, zIndexValues } from 'shared/utils/styles';
+import { borderRadiusValues, color, zIndexValues } from 'shared/utils/styles';
 
 export const Wrapper = styled.div`
   max-width: 100%;
@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
 
 export const StyledTooltip = styled.div`
   background: ${color.backgroundSecondary};
-  border-radius: 0.5em;
+  border-radius: ${borderRadiusValues.primary};
   display: flex;
   flex-direction: column;
   overflow: hidden;

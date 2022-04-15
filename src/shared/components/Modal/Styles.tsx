@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { color, zIndexValues } from 'shared/utils/styles';
+import { borderRadiusValues, color, zIndexValues } from 'shared/utils/styles';
 
 export const ScrollWrapper = styled.div`
   height: 100%;
@@ -28,7 +28,7 @@ interface StyledModalProps {
 
 export const StyledModal = styled.div<StyledModalProps>`
   background: ${color.backgroundSecondary};
-  border-radius: 0.5em;
+  border-radius: ${borderRadiusValues.primary};
   margin: 5em 0;
   max-width: ${(props) => props.width};
   padding: 2em;

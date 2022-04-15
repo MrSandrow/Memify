@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import { color } from 'shared/utils/styles';
+import { color, borderRadiusValues } from 'shared/utils/styles';
 
 export const Wrapper = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 
 export const Card = styled.div`
   align-items: center;
-  border-radius: 0.5em;
+  border-radius: ${borderRadiusValues.primary};
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 1fr auto;

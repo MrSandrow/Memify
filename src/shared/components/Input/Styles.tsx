@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
-import { color } from 'shared/utils/styles';
+import { borderRadiusValues, color } from 'shared/utils/styles';
 
 export const Wrapper = styled.div`
   border: 0.15em solid ${color.accentPrimary};
-  border-radius: 0.5em;
+  border-radius: ${borderRadiusValues.primary};
   color: ${color.accentPrimary};
   display: flex;
   font-size: 1.25em;

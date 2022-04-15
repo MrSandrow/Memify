@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Button from 'shared/components/Button/Button';
 
 export const StyledButton = styled(Button)`
-  border-radius: 0;
+  border-radius: unset;
   display: flex;
 `;
 

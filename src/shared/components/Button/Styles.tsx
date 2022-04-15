@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { borderRadiusValues } from 'shared/utils/styles';
+
 import buttonVariants from './buttonVariants';
 
 interface StyledButtonProps {
@@ -9,7 +11,7 @@ interface StyledButtonProps {
 
 export const StyledButton = styled.button<StyledButtonProps>`
   border: none;
-  border-radius: 0.5em;
+  border-radius: ${borderRadiusValues.primary};
   color: inherit;
   cursor: pointer;
   font-family: inherit;

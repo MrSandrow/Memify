@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { borderRadiusValues } from 'shared/utils/styles';
+
 interface StyledCanvasProps {
   cssHeight: number | null;
   cssWidth: number | null;
@@ -40,7 +42,7 @@ export const CanvasWrapper = styled.div`
 
 export const Canvas = styled.canvas<StyledCanvasProps>`
   background: white;
-  border-radius: 0.5em;
+  border-radius: ${borderRadiusValues.primary};
   cursor: crosshair;
   height: 100%;
   max-height: ${(props) => props.cssHeight}px;

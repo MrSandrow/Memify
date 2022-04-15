@@ -18,6 +18,10 @@ export const font = {
   logo: '\'Museo\', monospace;',
 };
 
+export const borderRadiusValues = {
+  primary: '0.5em',
+};
+
 export const zIndexValues = {
   tooltip: 1,
   modal: 2,
