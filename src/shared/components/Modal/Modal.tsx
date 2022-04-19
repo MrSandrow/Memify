@@ -3,13 +3,19 @@ import { createPortal } from 'react-dom';
 
 import { ScrollWrapper, Overlay, StyledModal } from './Styles';
 
-interface Props {
-  closingFunction?: () => void;
-  renderContent: (closingFunction?: () => void) => ReactElement;
+interface BasicProps {
+  closingFunction?: undefined;
+  renderContent: () => ReactElement;
   width: string;
 }
 
-const Modal:FC<Props> = ({
+interface AdvancedProps {
+  closingFunction: () => void;
+  renderContent: (closingFunction: () => void) => ReactElement;
+  width: string;
+}
+
+const Modal:FC<AdvancedProps | BasicProps> = ({
   closingFunction,
   renderContent,
   width,
@@ -21,7 +27,7 @@ const Modal:FC<Props> = ({
     <ScrollWrapper>
       <Overlay>
         <StyledModal width={width}>
-          {renderContent(closingFunction)}
+          {closingFunction ? renderContent(closingFunction) : renderContent()}
         </StyledModal>
       </Overlay>
     </ScrollWrapper>,
