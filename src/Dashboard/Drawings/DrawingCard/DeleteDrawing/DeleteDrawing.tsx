@@ -3,37 +3,27 @@ import { DocumentData } from 'firebase/firestore';
 
 import AlertModal from 'shared/components/AlertModal/AlertModal';
 import Button from 'shared/components/Button/Button';
-import Modal from 'shared/components/Modal/Modal';
+import ConfirmationModal from 'shared/components/Modal/Modal';
 
 import useDeleteDrawing from './useDeleteDrawing';
 
-import { StyledButton, Wrapper, Buttons } from './Styles';
+import { Wrapper, Buttons } from './Styles';
 
 interface Props {
+  closingFunction: () => void;
   drawing: DocumentData
 }
 
-const DeleteDrawing:FC<Props> = ({ drawing }) => {
+const DeleteDrawing:FC<Props> = ({ closingFunction: closeConfirmationModal, drawing }) => {
   const { deleteDrawing } = useDeleteDrawing();
 
-  const [displayConfirmationModal, setDisplayConfirmationModal] = useState(false);
   const [displayErrorModal, setDisplayErrorModal] = useState(false);
-
   const [isDeleting, setIsDeleting] = useState(false);
 
   return (
     <>
-      <StyledButton
-        icon="trash"
-        onClick={() => setDisplayConfirmationModal(true)}
-        variant="empty"
-      >
-        Delete
-      </StyledButton>
-
-      {displayConfirmationModal && (
-      <Modal
-        closingFunction={() => setDisplayConfirmationModal(false)}
+      <ConfirmationModal
+        closingFunction={closeConfirmationModal}
         renderContent={(closeModal) => (
           <Wrapper>
             <h2>Delete</h2>
@@ -47,7 +37,6 @@ const DeleteDrawing:FC<Props> = ({ drawing }) => {
         )}
         width="20em"
       />
-      )}
 
       {displayErrorModal && (
         <AlertModal
@@ -66,7 +55,7 @@ const DeleteDrawing:FC<Props> = ({ drawing }) => {
 
     /* This is creating a memory leak. I might fix it someday. */
     deleteDrawing(drawing['id'])
-      .then(() => setDisplayConfirmationModal(false))
+      .then(() => closeConfirmationModal())
       .catch(() => setDisplayErrorModal(true))
       .finally(() => setIsDeleting(false));
   }

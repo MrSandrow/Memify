@@ -1,11 +1,16 @@
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 
 import { Wrapper, StyledTooltip } from './Styles';
 
-const Tooltip:FC = ({ children }) => (
+interface Props {
+  closingFunction: () => void;
+  renderContent: (closingFunction: () => void) => ReactElement;
+}
+
+const Tooltip:FC<Props> = ({ closingFunction, renderContent }) => (
   <Wrapper>
     <StyledTooltip>
-      {children}
+      {renderContent(closingFunction)}
     </StyledTooltip>
   </Wrapper>
 );

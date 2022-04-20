@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { color, borderRadiusValues } from 'shared/utils/styles';
 
+import Button from 'shared/components/Button/Button';
+
 export const Wrapper = styled.div`
   position: relative;
 `;
@@ -42,4 +44,9 @@ export const Title = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+`;
+
+export const TooltipButton = styled(Button)`
+  border-radius: unset;
+  display: flex;
 `;

@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-import Button from 'shared/components/Button/Button';
-
-export const StyledButton = styled(Button)`
-  border-radius: unset;
-  display: flex;
-`;
-
 export const Wrapper = styled.div`
   display: grid;
   gap: 1.5em;

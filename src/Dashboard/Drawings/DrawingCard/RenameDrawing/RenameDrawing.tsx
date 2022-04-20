@@ -4,37 +4,27 @@ import { DocumentData } from 'firebase/firestore';
 import AlertModal from 'shared/components/AlertModal/AlertModal';
 import Button from 'shared/components/Button/Button';
 import Input from 'shared/components/Input/Input';
-import Modal from 'shared/components/Modal/Modal';
+import InputModal from 'shared/components/Modal/Modal';
 
 import useRenameDrawing from './useRenameDrawing';
 
-import { StyledButton, Wrapper, Buttons } from './Styles';
+import { Wrapper, Buttons } from './Styles';
 
 interface Props {
+  closingFunction: () => void;
   drawing: DocumentData;
 }
 
-const RenameDrawing:FC<Props> = ({ drawing }) => {
+const RenameDrawing:FC<Props> = ({ closingFunction: closeInputModal, drawing }) => {
   const { renameDrawing } = useRenameDrawing();
 
-  const [displayInputModal, setDisplayInputModal] = useState(false);
-  const [displayErrorModal, setDisplayErrorModal] = useState(false);
-
   const [newName, setNewName] = useState('');
+  const [displayErrorModal, setDisplayErrorModal] = useState(false);
 
   return (
     <>
-      <StyledButton
-        icon="edit"
-        onClick={() => setDisplayInputModal(true)}
-        variant="empty"
-      >
-        Rename
-      </StyledButton>
-
-      {displayInputModal && (
-      <Modal
-        closingFunction={() => setDisplayInputModal(false)}
+      <InputModal
+        closingFunction={closeInputModal}
         renderContent={(closeModal) => (
           <Wrapper>
             <h2>Rename</h2>
@@ -52,7 +42,6 @@ const RenameDrawing:FC<Props> = ({ drawing }) => {
         )}
         width="20em"
       />
-      )}
 
       {displayErrorModal && (
       <AlertModal
@@ -66,7 +55,7 @@ const RenameDrawing:FC<Props> = ({ drawing }) => {
 
   function handleRename() {
     renameDrawing(drawing['id'], newName)
-      .then(() => setDisplayInputModal(false))
+      .then(() => closeInputModal())
       .catch(() => setDisplayErrorModal(true));
   }
 };
