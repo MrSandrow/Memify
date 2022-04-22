@@ -46,32 +46,25 @@ const DrawingCard:FC<Props> = ({ drawing }) => {
       {displayTooltip && (
         <Tooltip
           closingFunction={() => setDisplayTooltip(false)}
-          renderContent={(closeTooltip) => (
-            <>
-              <TooltipButton
-                icon="edit"
-                onClick={() => {
-                  closeTooltip();
-                  setDisplayRenameModal(true);
-                }}
-                variant="empty"
-              >
-                Rename
-              </TooltipButton>
+        >
+          <>
+            <TooltipButton
+              icon="edit"
+              onClick={() => setDisplayRenameModal(true)}
+              variant="empty"
+            >
+              Rename
+            </TooltipButton>
 
-              <TooltipButton
-                icon="trash"
-                onClick={() => {
-                  closeTooltip();
-                  setDisplayDeleteModal(true);
-                }}
-                variant="empty"
-              >
-                Delete
-              </TooltipButton>
-            </>
-          )}
-        />
+            <TooltipButton
+              icon="trash"
+              onClick={() => setDisplayDeleteModal(true)}
+              variant="empty"
+            >
+              Delete
+            </TooltipButton>
+          </>
+        </Tooltip>
       )}
 
       {displayRenameModal && (

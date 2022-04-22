@@ -1,20 +1,26 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import { RelativeWrapper, AbsoluteWrapper, StyledTooltip } from './Styles';
 
 interface Props {
   closingFunction: () => void;
-  renderContent: (closingFunction: () => void) => ReactElement;
 }
 
-const Tooltip:FC<Props> = ({ closingFunction, renderContent }) => (
-  <RelativeWrapper>
-    <AbsoluteWrapper>
-      <StyledTooltip>
-        {renderContent(closingFunction)}
-      </StyledTooltip>
-    </AbsoluteWrapper>
-  </RelativeWrapper>
-);
+const Tooltip:FC<Props> = ({ closingFunction, children }) => {
+  useEffect(() => {
+    document.addEventListener('click', closingFunction);
+    return () => document.removeEventListener('click', closingFunction);
+  }, []);
+
+  return (
+    <RelativeWrapper>
+      <AbsoluteWrapper>
+        <StyledTooltip>
+          {children}
+        </StyledTooltip>
+      </AbsoluteWrapper>
+    </RelativeWrapper>
+  );
+};
 
 export default Tooltip;
