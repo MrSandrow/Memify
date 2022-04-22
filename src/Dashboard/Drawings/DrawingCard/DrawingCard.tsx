@@ -9,7 +9,6 @@ import RenameDrawing from './RenameDrawing/RenameDrawing';
 import DeleteDrawing from './DeleteDrawing/DeleteDrawing';
 
 import {
-  Wrapper,
   Card,
   StyledLink,
   Details,
@@ -29,25 +28,22 @@ const DrawingCard:FC<Props> = ({ drawing }) => {
 
   return (
     <>
-      <Wrapper>
-        <Card>
+      <Card>
+        <StyledLink to={`/editor/${drawing['id']}`}>
+          <Details>
+            <Icon variant="file" size="1em" />
+            <Title>{drawing['name']}</Title>
+          </Details>
+        </StyledLink>
 
-          <StyledLink to={`/editor/${drawing['id']}`}>
-            <Details>
-              <Icon variant="file" size="1em" />
-              <Title>{drawing['name']}</Title>
-            </Details>
-          </StyledLink>
+        <Button
+          icon="moreHorizontal"
+          onClick={() => setDisplayTooltip(true)}
+          variant="empty"
+        />
+      </Card>
 
-          <Button
-            icon="moreHorizontal"
-            onClick={() => setDisplayTooltip(true)}
-            variant="empty"
-          />
-
-        </Card>
-
-        {displayTooltip && (
+      {displayTooltip && (
         <Tooltip
           closingFunction={() => setDisplayTooltip(false)}
           renderContent={(closeTooltip) => (
@@ -76,8 +72,7 @@ const DrawingCard:FC<Props> = ({ drawing }) => {
             </>
           )}
         />
-        )}
-      </Wrapper>
+      )}
 
       {displayRenameModal && (
         <RenameDrawing

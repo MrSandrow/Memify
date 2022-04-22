@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 
-import { Wrapper, StyledTooltip } from './Styles';
+import { RelativeWrapper, AbsoluteWrapper, StyledTooltip } from './Styles';
 
 interface Props {
   closingFunction: () => void;
@@ -8,11 +8,13 @@ interface Props {
 }
 
 const Tooltip:FC<Props> = ({ closingFunction, renderContent }) => (
-  <Wrapper>
-    <StyledTooltip>
-      {renderContent(closingFunction)}
-    </StyledTooltip>
-  </Wrapper>
+  <RelativeWrapper>
+    <AbsoluteWrapper>
+      <StyledTooltip>
+        {renderContent(closingFunction)}
+      </StyledTooltip>
+    </AbsoluteWrapper>
+  </RelativeWrapper>
 );
 
 export default Tooltip;

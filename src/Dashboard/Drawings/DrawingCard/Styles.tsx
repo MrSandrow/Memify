@@ -5,10 +5,6 @@ import { color, borderRadiusValues } from 'shared/utils/styles';
 
 import Button from 'shared/components/Button/Button';
 
-export const Wrapper = styled.div`
-  position: relative;
-`;
-
 export const Card = styled.div`
   align-items: center;
   border-radius: ${borderRadiusValues.primary};
