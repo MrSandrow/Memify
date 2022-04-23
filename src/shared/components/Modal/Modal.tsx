@@ -1,4 +1,9 @@
-import React, { FC, ReactElement } from 'react';
+import React, {
+  FC,
+  useRef,
+  MouseEvent,
+  ReactElement,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import { ScrollWrapper, Overlay, StyledModal } from './Styles';
@@ -20,19 +25,31 @@ const Modal:FC<AdvancedProps | BasicProps> = ({
   renderContent,
   width,
 }) => {
+  const modalRef = useRef(null);
+
   const root = document.getElementById('root');
   if (!root) return null;
 
   return createPortal(
     <ScrollWrapper>
-      <Overlay>
-        <StyledModal width={width}>
+      <Overlay onClick={handleOutsideClick}>
+        <StyledModal ref={modalRef} width={width}>
           {closingFunction ? renderContent(closingFunction) : renderContent()}
         </StyledModal>
       </Overlay>
     </ScrollWrapper>,
     root,
   );
+
+  function handleOutsideClick({ nativeEvent }: MouseEvent) {
+    if (!closingFunction) return;
+
+    const modalElement = modalRef.current;
+    const isClickInsideModal = modalElement && nativeEvent.composedPath().includes(modalElement);
+    if (isClickInsideModal) return;
+
+    closingFunction();
+  }
 };
 
 export default Modal;
