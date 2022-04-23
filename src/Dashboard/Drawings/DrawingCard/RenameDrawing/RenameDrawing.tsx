@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, FormEvent } from 'react';
 import { DocumentData } from 'firebase/firestore';
 
 import AlertModal from 'shared/components/AlertModal/AlertModal';
@@ -8,7 +8,7 @@ import InputModal from 'shared/components/Modal/Modal';
 
 import useRenameDrawing from './useRenameDrawing';
 
-import { Wrapper, Buttons } from './Styles';
+import { Form, Buttons } from './Styles';
 
 interface Props {
   closingFunction: () => void;
@@ -26,7 +26,7 @@ const RenameDrawing:FC<Props> = ({ closingFunction: closeInputModal, drawing }) 
       <InputModal
         closingFunction={closeInputModal}
         renderContent={(closeModal) => (
-          <Wrapper>
+          <Form onSubmit={handleRename}>
             <h2>Rename</h2>
             <Input
               autoFocus
@@ -36,10 +36,10 @@ const RenameDrawing:FC<Props> = ({ closingFunction: closeInputModal, drawing }) 
             />
 
             <Buttons>
-              <Button variant="secondary" onClick={closeModal}>Cancel</Button>
-              <Button variant="primary" onClick={handleRename}>Rename</Button>
+              <Button type="button" variant="secondary" onClick={closeModal}>Cancel</Button>
+              <Button type="submit" variant="primary">Rename</Button>
             </Buttons>
-          </Wrapper>
+          </Form>
         )}
         width="20em"
       />
@@ -54,7 +54,9 @@ const RenameDrawing:FC<Props> = ({ closingFunction: closeInputModal, drawing }) 
     </>
   );
 
-  function handleRename() {
+  function handleRename(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
     renameDrawing(drawing['id'], newName)
       .then(() => closeInputModal())
       .catch(() => setDisplayErrorModal(true));

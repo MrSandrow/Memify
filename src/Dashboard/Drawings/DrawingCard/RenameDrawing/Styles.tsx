@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const Form = styled.form`
   display: grid;
   gap: 1.5em;
   justify-items: center;
