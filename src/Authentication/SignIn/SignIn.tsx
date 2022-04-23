@@ -23,6 +23,7 @@ const SignIn:FC = () => {
 
         <Form onSubmit={handleSubmit}>
           <Input
+            autoFocus
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Email"
             required

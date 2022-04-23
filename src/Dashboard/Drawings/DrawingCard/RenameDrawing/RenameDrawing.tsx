@@ -29,6 +29,7 @@ const RenameDrawing:FC<Props> = ({ closingFunction: closeInputModal, drawing }) 
           <Wrapper>
             <h2>Rename</h2>
             <Input
+              autoFocus
               onChange={(event) => setNewName(event.target.value)}
               placeholder="New name"
               value={newName}
