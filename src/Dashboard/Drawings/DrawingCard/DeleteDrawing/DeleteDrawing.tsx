@@ -1,4 +1,9 @@
-import React, { FC, useState } from 'react';
+import React, {
+  FC,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from 'react';
 import { DocumentData } from 'firebase/firestore';
 
 import AlertModal from 'shared/components/AlertModal/AlertModal';
@@ -11,14 +16,20 @@ import { Wrapper, Buttons } from './Styles';
 
 interface Props {
   closingFunction: () => void;
-  drawing: DocumentData
+  drawing: DocumentData;
+  isDeleting: boolean;
+  setIsDeleting: Dispatch<SetStateAction<boolean>>;
 }
 
-const DeleteDrawing:FC<Props> = ({ closingFunction: closeConfirmationModal, drawing }) => {
+const DeleteDrawing:FC<Props> = ({
+  closingFunction: closeConfirmationModal,
+  drawing,
+  isDeleting,
+  setIsDeleting,
+}) => {
   const { deleteDrawing } = useDeleteDrawing();
 
   const [displayErrorModal, setDisplayErrorModal] = useState(false);
-  const [isDeleting, setIsDeleting] = useState(false);
 
   return (
     <>

@@ -26,6 +26,8 @@ const DrawingCard:FC<Props> = ({ drawing }) => {
   const [displayRenameModal, setDisplayRenameModal] = useState(false);
   const [displayDeleteModal, setDisplayDeleteModal] = useState(false);
 
+  const [isDeleting, setIsDeleting] = useState(false);
+
   return (
     <>
       <Card>
@@ -78,6 +80,8 @@ const DrawingCard:FC<Props> = ({ drawing }) => {
         <DeleteDrawing
           closingFunction={() => setDisplayDeleteModal(false)}
           drawing={drawing}
+          isDeleting={isDeleting}
+          setIsDeleting={setIsDeleting}
         />
       )}
     </>
