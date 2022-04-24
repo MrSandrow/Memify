@@ -1,6 +1,7 @@
 import React, {
   FC,
   useRef,
+  useEffect,
   MouseEvent,
   ReactElement,
 } from 'react';
@@ -25,7 +26,22 @@ const Modal:FC<AdvancedProps | BasicProps> = ({
   renderContent,
   width,
 }) => {
-  const modalRef = useRef(null);
+  useEffect(() => {
+    /* This is creating a memory leak. I might fix it someday. */
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (!closingFunction) return;
+
+      const isEscapeKeyPressed = event.key === 'Escape';
+      if (!isEscapeKeyPressed) return;
+
+      closingFunction();
+    }
+  }, []);
+
+  const modalRef = useRef<HTMLDivElement | null>(null);
 
   const root = document.getElementById('root');
   if (!root) return null;
@@ -44,8 +60,8 @@ const Modal:FC<AdvancedProps | BasicProps> = ({
   function handleOutsideClick({ nativeEvent }: MouseEvent) {
     if (!closingFunction) return;
 
-    const modalElement = modalRef.current;
-    const isClickInsideModal = modalElement && nativeEvent.composedPath().includes(modalElement);
+    const modal = modalRef.current;
+    const isClickInsideModal = modal && nativeEvent.composedPath().includes(modal);
     if (isClickInsideModal) return;
 
     closingFunction();

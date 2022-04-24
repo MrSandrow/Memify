@@ -8,6 +8,7 @@ interface Props {
 
 const Tooltip:FC<Props> = ({ closingFunction, children }) => {
   useEffect(() => {
+    /* This is creating a memory leak. I might fix it someday. */
     document.addEventListener('click', closingFunction);
     return () => document.removeEventListener('click', closingFunction);
   }, []);
