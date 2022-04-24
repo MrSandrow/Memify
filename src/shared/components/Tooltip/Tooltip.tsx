@@ -8,7 +8,8 @@ interface Props {
 
 const Tooltip:FC<Props> = ({ closingFunction, children }) => {
   useEffect(() => {
-    /* This is creating a memory leak. I might fix it someday. */
+    /* This might update the state of another component after it has been unmounted, thus triggering
+    an error message saying that there is a memory leak, but I am pretty sure there is none. */
     document.addEventListener('click', closingFunction);
     return () => document.removeEventListener('click', closingFunction);
   }, []);
