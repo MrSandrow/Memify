@@ -26,12 +26,9 @@ const BaseStyles = createGlobalStyle`
   }
 
   html {
-    font-family: ${font.primary};
-  }
-
-  #root {
     background: ${color.backgroundPrimary};
     color: ${color.accentPrimary};
+    font-family: ${font.primary};
   }
 `;
 
